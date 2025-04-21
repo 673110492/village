@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('slug')->unique();
             $table->string('image')->nullable();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
 
@@ -32,7 +33,20 @@ return new class extends Migration {
             $table->id();
             $table->string('slug')->unique();
             $table->string('image')->nullable();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+
+        // Teams
+        Schema::create('teams', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('fonction');
+            $table->string('tel');
+            $table->string('image')->nullable();
+            $table->longText('presentation')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
 
@@ -50,7 +64,8 @@ return new class extends Migration {
             $table->id();
             $table->string('slug')->unique();
             $table->string('image')->nullable();
-            $table->string('contenu')->nullable();
+            $table->longText('contenu')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
 
@@ -69,6 +84,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('logo')->nullable();
             $table->string('url')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
 
@@ -77,7 +93,9 @@ return new class extends Migration {
             $table->id();
             $table->string('photo')->nullable();
             $table->string('name');
+            $table->string('fonction');
             $table->string('contenu');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
 
@@ -120,6 +138,7 @@ return new class extends Migration {
             $table->string('cover_image')->nullable();
             $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
             $table->timestamp('published_at')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
 
@@ -145,6 +164,7 @@ return new class extends Migration {
         Schema::dropIfExists('about_section_translations');
         Schema::dropIfExists('about_sections');
         Schema::dropIfExists('project_translations');
+        Schema::dropIfExists('teams');
         Schema::dropIfExists('projects');
         Schema::dropIfExists('service_translations');
         Schema::dropIfExists('services');
