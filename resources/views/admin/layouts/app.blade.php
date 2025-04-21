@@ -7,7 +7,8 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- DataTables CSS (via CDN) -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/2.0.0/trix.min.css">
 
 </head>
 <body class="bg-gray-100">
@@ -20,6 +21,20 @@
 
         <!-- Contenu principal -->
         <div class="flex-1 ml-48 mt-16 p-6">
+        @if(View::hasSection('pageTitle'))
+        <div class="mb-6">
+            <div class="bg-white shadow-md rounded-lg p-6 border-t-4 border-blue-500">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">@yield('pageTitle')</h1>
+
+                @hasSection('pageSubTitle')
+                            <div class="mb-4 text-sm text-blue-600">
+                    <a href="{{ route('admin.dashboard') }}" class="hover:underline">Tableau de bord</a> /
+                    <span>@yield('pageSubTitle')</span>
+                </div>
+                @endif
+            </div>
+        </div>
+    @endif
             @yield('content')
 
             <!-- Footer -->

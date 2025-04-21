@@ -32,9 +32,13 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     // Routes Services
     Route::resource('services', ServiceController::class);
+    Route::patch('services/{service}/toggle-status', [ServiceController::class, 'toggleStatus'])
+     ->name('services.toggleStatus');
 
     // Routes Projects
     Route::resource('projects', ProjectController::class);
+    Route::patch('projects/{project}/toggle-status', [ProjectController::class, 'toggleStatus'])
+     ->name('projects.toggleStatus');
 
     // Routes Posts
     Route::resource('posts', PostController::class);
@@ -44,6 +48,8 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     // Routes Testimonials
     Route::resource('testimonials', TestimonialController::class);
+    Route::patch('testimonials/{testimonial}/toggle-status', [TestimonialController::class, 'toggleStatus'])
+     ->name('testimonials.toggleStatus');
 
     // Routes Partners
     Route::resource('partners', PartnerController::class);

@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
-
+@section('pageTitle', 'Gestion des utilisateurs')
+@section('pageSubTitle', 'Utilisateurs / Liste')
 @section('content')
 <div class="container mx-auto p-4">
     <div class="bg-white shadow-lg rounded-lg p-6">
