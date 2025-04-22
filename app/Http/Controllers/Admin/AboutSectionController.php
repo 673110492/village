@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AboutSection;
+use Illuminate\Support\Facades\Storage;
 
 class AboutSectionController extends Controller
 {
     public function index() {
-        $sections = AboutSection::all();
-        return view('admin.about_sections.index', compact('sections'));
+        $abouts = AboutSection::all();
+        return view('admin.about_sections.index', compact('abouts'));
     }
 
     public function create() {
@@ -18,22 +19,79 @@ class AboutSectionController extends Controller
     }
 
     public function store(Request $request) {
-        $section = AboutSection::create($request->only(['slug', 'image', 'contenu']));
-        return redirect()->route('about_sections.index');
+        $data = $request->validate([
+            'slug' => 'required|unique:services,slug',
+            'image' => 'nullable|image',
+            'contenu' => 'nullable|string',
+        ]);
+    
+        // Gestion de l'image
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('abouts', 'public');
+        }
+    
+        // Le service est actif par défaut
+        $data['is_active'] = true;
+    
+        // Création du service
+        $about = AboutSection::create($data);
+        return redirect()->route('admin.about_sections.index')->with('success', 'Apropos créé avec succès.');
     }
-
+    public function show(AboutSection $aboutSection)
+    {
+        $about = $aboutSection;
+        return view('admin.about_sections.show', compact('about'));
+    }
     public function edit(AboutSection $aboutSection) {
-        return view('admin.about_sections.edit', compact('aboutSection'));
+        $about = $aboutSection;
+        return view('admin.about_sections.edit', compact('about'));
     }
 
     public function update(Request $request, AboutSection $aboutSection) {
-        $aboutSection->update($request->only(['slug', 'image', 'contenu']));
-        return redirect()->route('about_sections.index');
+        $data = $request->validate([
+            'slug' => 'required',
+            'image' => 'nullable|image|max:2048',
+            'contenu' => 'nullable|string',
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Supprimer l'ancienne image si existante
+            if ($service->image) {
+                Storage::disk('public')->delete($service->image);
+            }
+            $data['image'] = $request->file('image')->store('abouts', 'public');
+        }
+
+        $aboutSection->update($data);
+
+        return redirect()->route('admin.about_sections.index')->with('success', 'Apropos modifié avec succès.');
     }
 
     public function destroy(AboutSection $aboutSection) {
+        if ($aboutSection->image) {
+            Storage::disk('public')->delete($aboutSection->image);
+        }
         $aboutSection->delete();
-        return redirect()->route('about_sections.index');
+        return redirect()->route('admin.about_sections.index')->with('success', 'Apropos msupprimé avec succès.');
     }
+    public function toggleStatus(AboutSection $aboutSection)
+{
+    // Si on veut l'activer
+    if (! $aboutSection->is_active) {
+        // Désactiver tous les autres
+        AboutSection::where('is_active', true)->update(['is_active' => false]);
+
+        // Activer celui-ci
+        $aboutSection->is_active = true;
+        $aboutSection->save();
+    } else {
+        // Si on clique pour désactiver l'élément actif
+        $aboutSection->is_active = false;
+        $aboutSection->save();
+    }
+
+    return redirect()->route('admin.about_sections.index')->with('success', 'Statut mis à jour avec succès.');
+}
+
 }
 

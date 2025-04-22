@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\{
     ServiceController,
     ProjectController,
@@ -10,7 +11,11 @@ use App\Http\Controllers\Admin\{
     PartnerController,
     ContactController,
     SettingController,
-    UserController
+    UserController,
+    TeamController,
+    CompanyValueController,
+    CompanyMissionController,
+    DashboardController
 };
 
 /*
@@ -24,12 +29,22 @@ use App\Http\Controllers\Admin\{
 |
 */
 
+Route::get('/admin/login', function () {
+    return view('admin/auth.login');
+})->name('login'); 
+Route::post('admin/connexion', [AuthenticatedSessionController::class, 'store'])
+     ->name('login');
+Route::post('auth/admin/deconnexion', function () {
+Auth::logout();
+request()->session()->invalidate();
+request()->session()->regenerateToken();
+
+return redirect()->route('login')->with('status', 'Déconnecté avec succès.');
+})->name('logout');
 // Routes Admin avec préfixe 'admin'
 Route::prefix('admin')->name('admin.')->group(function() {
 
-    // Dashboard
-    Route::get('/', [ServiceController::class, 'index'])->name('dashboard'); // Dashboard
-
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // Routes Services
     Route::resource('services', ServiceController::class);
     Route::patch('services/{service}/toggle-status', [ServiceController::class, 'toggleStatus'])
@@ -44,7 +59,9 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::resource('posts', PostController::class);
 
     // Routes About Sections
-    Route::resource('about-sections', AboutSectionController::class);
+    Route::resource('about_sections', AboutSectionController::class);
+    Route::patch('about_sections/{aboutSection}/toggle-status', [AboutSectionController::class, 'toggleStatus'])
+     ->name('about_sections.toggleStatus');
 
     // Routes Testimonials
     Route::resource('testimonials', TestimonialController::class);
@@ -53,6 +70,8 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     // Routes Partners
     Route::resource('partners', PartnerController::class);
+    Route::patch('partners/{partner}/toggle-status', [PartnerController::class, 'toggleStatus'])
+     ->name('partners.toggleStatus');
 
     // Routes Contacts
     Route::resource('contacts', ContactController::class);
@@ -62,8 +81,20 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     // Routes Utilisateurs (Users)
     Route::resource('users', UserController::class); // CRUD utilisateurs
-});
 
-Route::get('/', function () {
-    return view('admin.dashboard');
+    // Routes Teams
+    Route::resource('teams', TeamController::class);
+    Route::patch('teams/{team}/toggle-status', [TeamController::class, 'toggleStatus'])
+     ->name('teams.toggleStatus');
+
+     // Routes Values
+     Route::resource('values', CompanyValueController::class);
+     Route::patch('values/{value}/toggle-status', [CompanyValueController::class, 'toggleStatus'])
+      ->name('values.toggleStatus');
+    // Missions
+    Route::resource('missions', CompanyMissionController::class);
+     Route::patch('missions/{mission}/toggle-status', [CompanyMissionController::class, 'toggleStatus'])
+      ->name('missions.toggleStatus');
+
+   
 });

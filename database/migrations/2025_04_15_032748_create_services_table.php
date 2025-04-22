@@ -78,6 +78,21 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+        Schema::create('company_values', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+        Schema::create('company_missions', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+
         // Partners
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
@@ -142,6 +157,16 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('post_id')->constrained('posts')->onDelete('cascade');
+            $table->string('nom');
+            $table->string('email');
+            $table->text('message');
+            $table->boolean('is_approved')->default(false); // Modération éventuelle
+            $table->timestamps();
+        });
+
         Schema::create('post_translations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('post_id')->constrained()->onDelete('cascade');
@@ -155,12 +180,15 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::dropIfExists('post_translations');
+        Schema::dropIfExists('comments');
         Schema::dropIfExists('posts');
         Schema::dropIfExists('settings');
         Schema::dropIfExists('contacts');
         Schema::dropIfExists('testimonial_translations');
         Schema::dropIfExists('testimonials');
         Schema::dropIfExists('partners');
+        Schema::dropIfExists('company_missions');
+        Schema::dropIfExists('company_values');
         Schema::dropIfExists('about_section_translations');
         Schema::dropIfExists('about_sections');
         Schema::dropIfExists('project_translations');
