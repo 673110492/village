@@ -1,4 +1,4 @@
-# segui_group
+# admin_site
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/ma-startup/segui_group.git
+git remote add origin https://gitlab.com/ma-startup/admin_site.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/ma-startup/segui_group/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.com/ma-startup/admin_site/-/settings/integrations)
 
 ## Collaborate with your team
 
