@@ -15,7 +15,8 @@ use App\Http\Controllers\Admin\{
     TeamController,
     CompanyValueController,
     CompanyMissionController,
-    DashboardController
+    DashboardController,
+    ProfilController
 };
 
 /*
@@ -28,23 +29,24 @@ use App\Http\Controllers\Admin\{
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
 
-Route::get('/admin/login', function () {
-    return view('admin/auth.login');
-})->name('login'); 
-Route::post('admin/connexion', [AuthenticatedSessionController::class, 'store'])
-     ->name('login');
-Route::post('auth/admin/deconnexion', function () {
-Auth::logout();
-request()->session()->invalidate();
-request()->session()->regenerateToken();
-
-return redirect()->route('login')->with('status', 'Déconnecté avec succès.');
-})->name('logout');
+    return redirect('/login')->with('status', 'Vous avez été déconnecté avec succès.');
+})->name('deconnexion');
 // Routes Admin avec préfixe 'admin'
-Route::prefix('admin')->name('admin.')->group(function() {
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function() {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    //profile
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profile.index');
+    Route::post('/profil/update-infos', [ProfilController::class, 'updateInfos'])->name('profile.update.infos');
+    Route::post('/profil/update-photo', [ProfilController::class, 'updatePhoto'])->name('profile.update.photo');
+    Route::post('/profil/update-password', [ProfilController::class, 'updatePassword'])->name('profile.update.password');
+
     // Routes Services
     Route::resource('services', ServiceController::class);
     Route::patch('services/{service}/toggle-status', [ServiceController::class, 'toggleStatus'])
@@ -57,7 +59,10 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
     // Routes Posts
     Route::resource('posts', PostController::class);
-
+    Route::patch('posts/{post}/toggle-status', [PostController::class, 'toggleStatus'])
+     ->name('posts.toggleStatus');
+     Route::patch('comments/{id}/approve', [PostController::class, 'approveComment'])->name('comments.approve');
+     Route::delete('comments/{id}', [PostController::class, 'destroyComment'])->name('comments.destroy');
     // Routes About Sections
     Route::resource('about_sections', AboutSectionController::class);
     Route::patch('about_sections/{aboutSection}/toggle-status', [AboutSectionController::class, 'toggleStatus'])

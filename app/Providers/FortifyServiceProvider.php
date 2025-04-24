@@ -28,6 +28,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
@@ -35,10 +36,14 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView(function () {
             return view('admin.auth.login');
-        }); 
-        Fortify::redirects([
-            'login' => '/admin/dashboard', // ta route après login
-        ]);
+        });
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('admin.auth.forgot-password');
+        });
+    
+        Fortify::resetPasswordView(function ($request) {
+            return view('admin.auth.reset-password', ['request' => $request]);
+        });
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
 
