@@ -41,67 +41,56 @@
     </div>
 </div>
 
-<!-- About Section Start -->
+<style>
+    .about-image-1 {
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 400px; /* Ajuste la hauteur selon tes besoins */
+}
+
+.about-image-2 img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+</style>
+
+
+@foreach($abouts as $about)
 <section class="about-section section-padding fix bg-cover" style="background-image: url('assets/img/service/service-bg-2.jpg');">
     <div class="container">
         <div class="about-wrapper style-2">
             <div class="row">
+                <!-- Image Section -->
                 <div class="col-lg-6">
                     <div class="about-image-items">
                         <div class="circle-shape">
                             <img src="assets/img/about/circle.png" alt="shape-img">
                         </div>
-                        <div class="counter-shape float-bob-y">
-                            <div class="icon">
-                                <img src="assets/img/about/icon-1.svg" alt="icon-img">
-                            </div>
-                            <div class="content">
-                                <h3><span class="count">25</span>Years</h3>
-                                <p>Of Experience</p>
-                            </div>
-                        </div>
-                        <div class="about-image-1 bg-cover wow fadeInLeft" data-wow-delay=".3s" style="background-image: url('assets/img/about/03.png');">
+
+                        <div class="about-image-1 bg-cover wow fadeInLeft" data-wow-delay=".3s" style="background-image: url('{{ asset('storage/' . $about->image) }}');">
                             <div class="about-image-2 wow fadeInUp" data-wow-delay=".5s">
-                                <img src="assets/img/about/04.jpg" alt="about-img">
+                                <img src="{{ asset('storage/' . $about->image) }}" alt="about-img">
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Content Section -->
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="about-content">
                         <div class="section-title">
-                            <span class="wow fadeInUp">ABOUT INFOTECK</span>
+                            <span class="wow fadeInUp">{{ $about->slug }}</span>
                             <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                                We Are Increasing Business Success With <span>Technology</span>
+                                {{ $about->slug }}
                             </h2>
                         </div>
                         <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".5s">
-                            It is a long established fact that a reader will be distracted the readable <br> content of a page when looking at layout the point.
+                            {!! $about->contenu !!}
                         </p>
-                        <div class="about-icon-items">
-                            <div class="icon-items wow fadeInUp" data-wow-delay=".7s">
-                                <div class="icon">
-                                    <img src="assets/img/about/icon-4.svg" alt="icon-img">
-                                </div>
-                                <div class="content">
-                                    <h4>Problem Solving</h4>
-                                    <p>
-                                        Aliquam erat volutpat Nullam imperdiet
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="icon-items wow fadeInUp" data-wow-delay=".9s">
-                                <div class="icon">
-                                    <img src="assets/img/about/icon-5.svg" alt="icon-img">
-                                </div>
-                                <div class="content">
-                                    <h4>Mission & Vision</h4>
-                                    <p>
-                                        Ut vehiculadictumst. Maecenas ante.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                         <div class="about-author">
                             <div class="about-button wow fadeInUp" data-wow-delay=".5s">
                                 <a href="about.html" class="theme-btn">
@@ -109,20 +98,18 @@
                                     <i class="fa-solid fa-arrow-right-long"></i>
                                 </a>
                             </div>
-                            <div class="author-image wow fadeInUp" data-wow-delay=".7s">
-                                <img src="assets/img/about/author.png" alt="author-img">
-                                <div class="content">
-                                    <h6>Ronald Richards</h6>
-                                    <p>Co, Founder</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </section>
+@endforeach
+
+
+
 
 <!-- Offer Section Start -->
 <section class="offer-section fix section-bg-2 section-padding">
@@ -136,7 +123,7 @@
         <div class="section-title text-center">
             <span class="wow fadeInUp">Our offering</span>
             <h2 class="text-white wow fadeInUp" data-wow-delay=".3s">
-                Enhance and Pioneer Using <br> Technology Trends
+                Améliorer et Innover en Utilisant <br> les Tendances Technologiques
             </h2>
         </div>
         <div class="row">
@@ -297,9 +284,9 @@
     <div class="container">
         <div class="section-title-area">
             <div class="section-title">
-                <span class="wow fadeInUp">PROJECTS</span>
+                <span class="wow fadeInUp">PROJETS</span>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                    Our Latest Incredible <br> Client's Projects
+                    Nos Derniers Projets Incroyables
                 </h2>
             </div>
             <div class="array-button wow fadeInUp" data-wow-delay=".5s">
@@ -395,9 +382,9 @@
     <div class="container">
         <div class="section-title-area">
             <div class="section-title">
-                <span class="wow fadeInUp">Team Members</span>
+                <span class="wow fadeInUp">Notre Équipe</span>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                    Our Dedicated Team <br> Members
+                    Les Membres Dévoués de Notre Équipe
                 </h2>
             </div>
             <a href="team.html" class="theme-btn wow fadeInUp" data-wow-delay=".5s">
@@ -406,97 +393,44 @@
             </a>
         </div>
         <div class="row">
+            @foreach($teams as $team)
             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                 <div class="single-team-items">
                     <div class="team-image">
-                        <img src="assets/img/team/04.jpg" alt="team-img">
+                        <img src="{{ asset('storage/' . $team->image) }}" alt="team-img">
                         <div class="social-profile">
                             <ul>
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
                             </ul>
                             <span class="plus-btn"><i class="fas fa-share-alt"></i></span>
                         </div>
                     </div>
                     <div class="team-content text-center">
                         <h3>
-                            <a href="team-details.html">Marvin McKinney</a>
+                            <a href="team-details.html">{{ $team->name }}</a>
                         </h3>
-                        <p>Web Designer</p>
+                        <p>{{ $team->fonction }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                <div class="single-team-items">
-                    <div class="team-image">
-                        <img src="assets/img/team/05.jpg" alt="team-img">
-                        <div class="social-profile">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                            </ul>
-                            <span class="plus-btn"><i class="fas fa-share-alt"></i></span>
-                        </div>
-                    </div>
-                    <div class="team-content text-center">
-                        <h3>
-                            <a href="team-details.html">Marvin McKinney</a>
-                        </h3>
-                        <p>Web Designer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                <div class="single-team-items">
-                    <div class="team-image">
-                        <img src="assets/img/team/06.jpg" alt="team-img">
-                        <div class="social-profile">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                            </ul>
-                            <span class="plus-btn"><i class="fas fa-share-alt"></i></span>
-                        </div>
-                    </div>
-                    <div class="team-content text-center">
-                        <h3>
-                            <a href="team-details.html">Marvin McKinney</a>
-                        </h3>
-                        <p>Web Designer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".9s">
-                <div class="single-team-items">
-                    <div class="team-image">
-                        <img src="assets/img/team/07.jpg" alt="team-img">
-                        <div class="social-profile">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                            </ul>
-                            <span class="plus-btn"><i class="fas fa-share-alt"></i></span>
-                        </div>
-                    </div>
-                    <div class="team-content text-center">
-                        <h3>
-                            <a href="team-details.html">Marvin McKinney</a>
-                        </h3>
-                        <p>Web Designer</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+<!--<< Team Section End >>-->
+
+<!-- Ajout du CSS pour les images -->
+<style>
+    .team-image img {
+        width: 250px;      /* Largeur fixe */
+        height: 250px;     /* Hauteur fixe */
+        object-fit: cover; /* Pour que l'image remplisse le conteneur sans déformation */
+    }
+</style>
+
+
 
 <!-- Brand Section Start -->
 <div class="brand-section fix section-padding pt-0">

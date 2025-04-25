@@ -24,15 +24,15 @@ class AboutSectionController extends Controller
             'image' => 'nullable|image',
             'contenu' => 'nullable|string',
         ]);
-    
+
         // Gestion de l'image
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('abouts', 'public');
         }
-    
+
         // Le service est actif par défaut
         $data['is_active'] = true;
-    
+
         // Création du service
         $about = AboutSection::create($data);
         return redirect()->route('admin.about_sections.index')->with('success', 'Apropos créé avec succès.');
@@ -56,8 +56,8 @@ class AboutSectionController extends Controller
 
         if ($request->hasFile('image')) {
             // Supprimer l'ancienne image si existante
-            if ($service->image) {
-                Storage::disk('public')->delete($service->image);
+            if ($aboutSection->image) {  // Utilise $aboutSection au lieu de $service
+                Storage::disk('public')->delete($aboutSection->image);
             }
             $data['image'] = $request->file('image')->store('abouts', 'public');
         }
@@ -66,6 +66,7 @@ class AboutSectionController extends Controller
 
         return redirect()->route('admin.about_sections.index')->with('success', 'Apropos modifié avec succès.');
     }
+
 
     public function destroy(AboutSection $aboutSection) {
         if ($aboutSection->image) {
