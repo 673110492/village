@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        
+
 
         // Services
         Schema::create('services', function (Blueprint $table) {
@@ -43,7 +43,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('fonction');
-            $table->string('tel');
+            $table->string('tel')->nullable();
             $table->string('image')->nullable();
             $table->longText('presentation')->nullable();
             $table->boolean('is_active')->default(true);

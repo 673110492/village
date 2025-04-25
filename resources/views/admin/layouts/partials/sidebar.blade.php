@@ -32,7 +32,7 @@
                 <i class="fas fa-solid fa-bullseye mr-2"></i> Missions
             </a></li>
             <li><a href="{{route('admin.posts.index')}}" class="block py-2 px-4 hover:bg-blue-700">
-                <i class="fas fa-newspaper mr-2"></i> Actualité 
+                <i class="fas fa-newspaper mr-2"></i> Actualité
             </a></li>
             <li><a href="{{route('admin.settings.index')}}" class="block py-2 px-4 hover:bg-blue-700">
                 <i class="fas fa-cog mr-2"></i> Parametres
