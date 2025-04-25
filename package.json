@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.1.4",
+        "peer": "^1.0.2",
         "tailwindcss": "^4.1.4"
     }
 }

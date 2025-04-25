@@ -1,122 +1,164 @@
-</main>
-     
-
-   <!-- Footer area start -->
-   <footer>
-      <div class="footer-main bg-color-1">
-         <div class="footer-top section-space-medium">
-            <div class="small-container">
-               <div class="row g-4">
-                  <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6">
-                     <div class="footer-widget-1">
-                        <figure class="image">
-                           <img src="assets/imgs/logo/logo-white.svg" alt="">
-                        </figure>
-                        <p class="mt-40 mb-40">
-                           Phasellus ultricies aliquam volutpat 
-                           ullamcorper laoreet neque, a lacinia
-                           curabitur lacinia mollis
-                        </p>
-                        <div class="footer-socials">
-                           <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
-                           <span><a href="#"><i class="fab fa-twitter"></i></a></span>
-                           <span><a href="#"><i class="fab fa-linkedin-in"></i></a></span>
-                           <span><a href="#"><i class="fab fa-youtube"></i></a></span>
+<footer class="footer-section footer-bg">
+    <div class="footer-shape-4">
+        <img src="assets/img/footer-shape-4.png" alt="shape-img">
+    </div>
+    <div class="shape-2">
+        <img src="assets/img/footer-shape-3.png" alt="shape-img">
+    </div>
+    <div class="footer-widgets-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="single-footer-widget">
+                        <div class="widget-head">
+                            <h3>About Us</h3>
                         </div>
-                     </div>
-                  </div>
-                  <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6">
-                     <div class="footer-widget-2 pl-50">
-                        <h4 class="mb-20 footer-title">Our Services</h4>
-                        <ul class="service-list">
-                           <li><a href="service-details.html">IT Management</a></li>
-                           <li><a href="service-details.html">SEO Optimization</a></li>
-                           <li><a href="service-details.html">Web Development</a></li>
-                           <li><a href="service-details.html">Cyber Security</a></li>
-                           <li><a href="service-details.html">Data Security</a></li>
+                        <div class="footer-content">
+                            <p>
+                                Phasellus ultricies aliquam volutpat
+                                ullamcorper laoreet neque, a lacinia
+                                curabitur lacinia mollis
+                            </p>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-4 col-md-6 ps-lg-5 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="single-footer-widget">
+                        <div class="widget-head">
+                            <h3>Quick Links</h3>
+                        </div>
+                        <ul class="list-area">
+                            <li>
+                                <a href="about.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    Infotech About
+                                </a>
+                            </li>
+                            <li>
+                                <a href="service.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    Our Services
+                                </a>
+                            </li>
+                            <li>
+                                <a href="news.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    Our Blogs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="faq.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    FAQ’S
+                                </a>
+                            </li>
+                            <li>
+                                <a href="contact.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    Contact Us
+                                </a>
+                            </li>
                         </ul>
-                     </div>
-                  </div>
-                  <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6">
-                     <div class="footer-widget-3">
-                        <h4 class="mb-20 footer-title">Latest Post</h4>
-                        <ul class="blog-list">
-                           <li>
-                              <div class="footer-blog-post-box mb-15">
-                                 <figure class="thumb">
-                                    <img src="assets/imgs/blog/blog-s-1.jpg" alt="">
-                                 </figure>
-                                 <div class="content">
-                                    <span class="date"><a href="#">05 Dec, 2024</a></span>
-                                    <h6><a href="blog-details-2.html">Tacking the Changes of
-                                       Retail Industry</a></h6>
-                                 </div>
-                              </div>
-                           </li>
-                           <li>
-                              <div class="footer-blog-post-box mb-15">
-                                 <figure class="thumb">
-                                    <img src="assets/imgs/blog/blog-s-2.jpg" alt="">
-                                 </figure>
-                                 <div class="content">
-                                    <span class="date"><a href="#">05 Dec, 2024</a></span>
-                                    <h6><a href="blog-details-2.html">What’s the Holding Back
-                                       the It Solution</a></h6>
-                                 </div>
-                              </div>
-                           </li>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 ps-lg-5 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="single-footer-widget style-margin">
+                        <div class="widget-head">
+                            <h3>IT Solution</h3>
+                        </div>
+                        <ul class="list-area">
+                            <li>
+                                <a href="service-details.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    IT Management
+                                </a>
+                            </li>
+                            <li>
+                                <a href="service-details.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    Web Development
+                                </a>
+                            </li>
+                            <li>
+                                <a href="service-details.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    Cyber Security
+                                </a>
+                            </li>
+                            <li>
+                                <a href="service-details.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    SEO Optimization
+                                </a>
+                            </li>
+                            <li>
+                                <a href="service-details.html">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    App Development
+                                </a>
+                            </li>
                         </ul>
-                     </div>
-                  </div>
-                  <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6">
-                     <div class="footer-widget-4 pr-30">
-                        <h4 class="mb-20 footer-title">Newsletter</h4>
-                        <p>Sign Up For News & Get 30% Off
-                           in New User.</p>
-                         <div class="footer-subscribe">
-                           <form action="#">
-                              <input type="email" name="email" placeholder="Your email address" required>
-                              <button  type="submit" class="primary-btn-1 btn-hover">
-                                 SUBSCRIBE NOW
-                                 <span style="top: 147.172px; left: 108.5px;"></span>
-                              </button>
-                           </form>
-                         </div>  
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+                    <div class="single-footer-widget style-margin">
+                        <div class="widget-head">
+                            <h3>Newsletter</h3>
+                        </div>
+                       <div class="footer-content">
+                            <p>
+                                 Sign up to seargin weekly newsletter to get the latest updates.
+                            </p>
+                            <div class="footer-input">
+                                <input type="email" id="email2" placeholder="Enter Email Address">
+                                <button class="newsletter-btn" type="submit">
+                                    <i class="fab fa-telegram-plane"></i>
+                                </button>
+                            </div>
+                       </div>
+                    </div>
+                </div>
             </div>
-         </div>
-         <div class="small-container">
-            <div class="footer-bottom pt-30 pb-30">
-               <div class="left-area">
-                  <span>© All Copyright 2024 by <a href="#">wotech</a></span>
-               </div>
-               <div class="right-area">
-                  <span><a href="#">Terms & Condition</a></span>
-                  <span><a href="#">Privacy Policy</a></span>
-               </div>
-            </div> 
-         </div>     
-      </div>
-   </footer>
-   <!-- Footer area end -->
-   
+        </div>
+    </div>
+    <div class="footer-bottom style-3">
+        <div class="container">
+            <div class="footer-wrapper d-flex align-items-center justify-content-between">
+                <div class="footer-logo wow fadeInLeft" data-wow-delay=".3s">
+                    <a href="index.html">
+                        <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                    </a>
+                </div>
+                <p class="wow fadeInRight color-2" data-wow-delay=".5s">
+                    © All Copyright 2024 by <a href="index.html">Infotech</a>
+                </p>
+            </div>
+        </div>
+        <a href="#" id="scrollUp" class="scroll-icon">
+            <i class="far fa-arrow-up"></i>
+        </a>
+    </div>
+</footer>
 
-   <!-- JS here -->
-   <script src="assets/js/jquery-3.7.1.min.js"></script>
-   <script src="assets/js/waypoints.min.js"></script>
-   <script src="assets/js/bootstrap.bundle.min.js"></script>
-   <script src="assets/js/meanmenu.min.js"></script>
-   <script src="assets/js/swiper.min.js"></script>
-   <script src="assets/js/slick.min.js"></script>
-   <script src="assets/js/magnific-popup.min.js"></script>
-   <script src="assets/js/counterup.js"></script>
-   <script src="assets/js/wow.js"></script>
-   <script src="assets/js/main.js"></script>
-
+<!--<< All JS Plugins >>-->
+<script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
+<script src="{{asset('assets/js/viewport.jquery.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.nice-select.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.waypoints.js')}}"></script>
+<script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+<script src="{{asset('assets/js/swiper-bundle.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.meanmenu.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{asset('assets/js/wow.min.js')}}"></script>
+<script src="{{asset('assets/js/main.js')}}"></script>
 </body>
 
-
-<!-- Mirrored from gramentheme.com/html/wotech/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Apr 2025 16:53:40 GMT -->
+<!-- Mirrored from gramentheme.com/html/infotek/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Apr 2025 09:52:58 GMT -->
 </html>

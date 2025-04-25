@@ -37,6 +37,9 @@
             <li><a href="{{route('admin.settings.index')}}" class="block py-2 px-4 hover:bg-blue-700">
                 <i class="fas fa-cog mr-2"></i> Parametres
             </a></li>
+            <li><a href="{{route('chat.index')}}" class="block py-2 px-4 hover:bg-blue-700">
+                <i class="fas fa-cog mr-2"></i> Chat
+            </a></li>
         </ul>
     </nav>
 </aside>

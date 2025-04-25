@@ -18,6 +18,10 @@ use App\Http\Controllers\Admin\{
     DashboardController,
     ProfilController
 };
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\site\AboutController;
+use App\Http\Controllers\site\AcceuilController;
+use App\Http\Controllers\site\ContacterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +40,10 @@ Route::post('/logout', function () {
 
     return redirect('/login')->with('status', 'Vous avez été déconnecté avec succès.');
 })->name('deconnexion');
+
+Route::get('/', function () {
+    return to_route('accueil.index');
+});
 // Routes Admin avec préfixe 'admin'
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function() {
 
@@ -101,5 +109,31 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function() {
      Route::patch('missions/{mission}/toggle-status', [CompanyMissionController::class, 'toggleStatus'])
       ->name('missions.toggleStatus');
 
-   
+
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/{user}', [ChatController::class, 'show'])->name('chat.show');
+    Route::post('/chat/send', [ChatController::class, 'send'])->name('chat.send');
+});
+
+// routes/web.php
+
+Route::patch('/messages/{messageId}/mark-as-read', [ChatController::class, 'markAsRead']);
+
+
+
+
+Route::controller(AcceuilController::class)->name('accueil.')->prefix('accueil')->group(function () {
+    Route::get('/', 'index')->name('index');
+});
+
+Route::controller(ContacterController::class)->name('contacter.')->prefix('contacter')->group(function () {
+    Route::get('/', 'index')->name('index');
+});
+
+Route::controller(AboutController::class)->name('propos.')->prefix('propos')->group(function () {
+    Route::get('/', 'index')->name('index');
+});
+
