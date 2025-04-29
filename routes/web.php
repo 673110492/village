@@ -21,7 +21,9 @@ use App\Http\Controllers\Admin\{
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\site\AboutController;
 use App\Http\Controllers\site\AcceuilController;
+use App\Http\Controllers\site\BlogController;
 use App\Http\Controllers\site\ContacterController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,4 +138,27 @@ Route::controller(ContacterController::class)->name('contacter.')->prefix('conta
 Route::controller(AboutController::class)->name('propos.')->prefix('propos')->group(function () {
     Route::get('/', 'index')->name('index');
 });
+
+Route::get('/project-details/{id}', [AboutController::class, 'show'])->name('projects.details');
+
+
+
+Route::controller(BlogController::class)
+    ->name('blog.')
+    ->prefix('blog')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{slug}', 'show')->name('show');
+    });
+
+    use App\Http\Controllers\site\ProjeController;
+
+    Route::prefix('projects')->name('projects.')->group(function () {
+        Route::get('/', [ProjeController::class, 'index'])->name('index');     // /projects
+        Route::get('/{id}', [ProjeController::class, 'show'])->name('show');   // /projects/{id}
+    });
+
+
+
+
 

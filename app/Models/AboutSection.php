@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AboutSection extends Model
 {
     use HasFactory;
-    protected $fillable = ['slug', 'image', 'contenu'];
+    protected $fillable = ['slug', 'image','video', 'contenu'];
 
     public function translations()
     {

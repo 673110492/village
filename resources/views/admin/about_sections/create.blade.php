@@ -3,60 +3,82 @@
 @section('pageSubTitle', 'A propos / Ajout')
 
 @section('content')
-<div class="container mx-auto p-4">
-    <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
+    <div class="container mx-auto p-4">
+        <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
 
-        <!-- Bouton retour -->
-        <div class="mb-4">
-            <a href="{{ route('admin.about_sections.index') }}"
-               class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                ← Retour à la liste A propos
-            </a>
-        </div>
-
-        <!-- Titre -->
-        <h2 class="text-2xl font-semibold text-gray-700 mb-4">
-            Créer un nouvel element
-        </h2>
-        <hr class="border-t-3 border-blue-500 mb-6">
-
-        <!-- Formulaire -->
-        <form action="{{ route('admin.about_sections.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
-            @csrf
-
-            <!-- Titre du service -->
-            <div>
-                <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Titre du service</label>
-                <input type="text" name="slug" id="title" required
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-yellow-300" />
+            <!-- Bouton retour -->
+            <div class="mb-4">
+                <a href="{{ route('admin.about_sections.index') }}"
+                    class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                    ← Retour à la liste A propos
+                </a>
             </div>
 
-            <!-- Image -->
-            <div>
-                <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Image (optionnelle)</label>
-                <input type="file" name="image" id="image"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
-            </div>
+            <!-- Titre -->
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">
+                Créer un nouvel element
+            </h2>
+            <hr class="border-t-3 border-blue-500 mb-6">
 
-            <!-- contenu (Rich Text) -->
-            <div>
-                <label for="contenu" class="block text-sm font-medium text-gray-700 mb-1">contenu</label>
-                <textarea name="contenu" id="contenu" class="richtext w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-yellow-300">{{ old('contenu') }}</textarea>
-            </div>
+            <!-- Formulaire -->
+            <form action="{{ route('admin.about_sections.store') }}" method="POST" enctype="multipart/form-data"
+                class="space-y-6">
+                @csrf
 
-            <!-- Bouton Enregistrer -->
-            <div class="pt-5 flex justify-end">
-                <button type="submit"
+                <!-- Titre du service -->
+                <div>
+                    <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Titre du service</label>
+                    <input type="text" name="slug" id="title" value="{{ old('slug') }}" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-yellow-300" />
+                    @error('slug')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Image -->
+                <div>
+                    <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Image (optionnelle)</label>
+                    <input type="file" name="image" id="image"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                    @error('image')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Vidéo -->
+                <div>
+                    <label for="video" class="block text-sm font-medium text-gray-700 mb-1">Vidéo (optionnelle, max 1
+                        Go)</label>
+                    <input type="file" name="video" id="video" accept="video/*"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" />
+                    @error('video')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Contenu (Rich Text) -->
+                <div>
+                    <label for="contenu" class="block text-sm font-medium text-gray-700 mb-1">Contenu</label>
+                    <textarea name="contenu" id="contenu"
+                        class="richtext w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-yellow-300">{{ old('contenu') }}</textarea>
+                    @error('contenu')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Bouton Enregistrer -->
+                <div class="pt-5 flex justify-end">
+                    <button type="submit"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg">
-                    Enregistrer
-                </button>
-            </div>
-        </form>
+                        Enregistrer
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<!-- Trix Editor -->
-<script src="https://cdn.jsdelivr.net/npm/tinymce@6.8.3/tinymce.min.js" referrerpolicy="origin"></script>
+    <!-- Trix Editor -->
+    <script src="https://cdn.jsdelivr.net/npm/tinymce@6.8.3/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: 'textarea.richtext',
@@ -66,4 +88,4 @@
             toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
         });
     </script>
-    @endsection
+@endsection

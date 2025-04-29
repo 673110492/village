@@ -58,7 +58,6 @@
 
 </style>
 
-
 @foreach($abouts as $about)
 <section class="about-section section-padding fix bg-cover" style="background-image: url('assets/img/service/service-bg-2.jpg');">
     <div class="container">
@@ -66,18 +65,26 @@
             <div class="row">
                 <!-- Image Section -->
                 <div class="col-lg-6">
-                    <div class="about-image-items">
-                        <div class="circle-shape">
-                            <img src="assets/img/about/circle.png" alt="shape-img">
-                        </div>
+                    <div class="card shadow rounded-4 overflow-hidden">
+                        <div class="card-body p-3">
+                            <!-- Cercle décoratif (optionnel) -->
+                            <div class="text-center mb-3">
+                                <img src="{{ asset('assets/img/about/circle.png') }}" alt="shape-img" class="img-fluid" style="max-width: 80px;">
+                            </div>
 
-                        <div class="about-image-1 bg-cover wow fadeInLeft" data-wow-delay=".3s" style="background-image: url('{{ asset('storage/' . $about->image) }}');">
-                            <div class="about-image-2 wow fadeInUp" data-wow-delay=".5s">
-                                <img src="{{ asset('storage/' . $about->image) }}" alt="about-img">
+                            <!-- Première image -->
+                            <div class="mb-3 wow fadeInLeft" data-wow-delay=".3s">
+                                <img src="{{ asset('storage/' . $about->image) }}" alt="about-img-1" class="img-fluid rounded w-100">
+                            </div>
+
+                            <!-- Deuxième image -->
+                            <div class="wow fadeInUp" data-wow-delay=".5s">
+                                <img src="assets/img/breadcrumb.jpg" alt="about-img-2" class="img-fluid rounded w-100">
                             </div>
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Content Section -->
                 <div class="col-lg-6 mt-4 mt-lg-0">
@@ -91,6 +98,17 @@
                         <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".5s">
                             {!! $about->contenu !!}
                         </p>
+
+                        <!-- Video Section -->
+                        @if($about->video)
+                            <div class="video-section mt-4 wow fadeInUp" data-wow-delay=".5s">
+                                <video width="100%" controls>
+                                    <source src="{{ asset('storage/' . $about->video) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        @endif
+
                         <div class="about-author">
                             <div class="about-button wow fadeInUp" data-wow-delay=".5s">
                                 <a href="about.html" class="theme-btn">
@@ -107,7 +125,6 @@
     </div>
 </section>
 @endforeach
-
 
 
 
@@ -297,57 +314,36 @@
         <div class="project-wrapper">
             <div class="swiper project-slider-2">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="project-items style-2">
-                            <div class="project-image">
-                                <img src="assets/img/project/05.jpg" alt="project-img">
-                                <div class="project-content">
-                                    <p>Technology</p>
-                                    <h4>
-                                        <a href="project-details.html">Software Development</a>
-                                    </h4>
-                                    <a href="project-details.html" class="arrow-icon">
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </a>
+                    @foreach ($projects->where('is_active', true) as $project)
+                        <div class="swiper-slide">
+                            <div class="project-items style-2">
+                                <div class="project-image">
+                                    <img src="{{ asset('storage/' . $project->image) }}" alt="project-img">
+                                    <div class="project-content">
+                                        <p>Project</p> <!-- Vous pouvez personnaliser ce texte selon vos besoins -->
+
+                                        <h4>
+                                            <a href="{{ route('projects.details', ['id' => $project->id]) }}">
+                                                {{ Str::limit(strip_tags($project->description), 40) }}
+                                            </a>
+                                        </h4>
+
+                                        <!-- Lien pour afficher les détails du projet -->
+                                        <a href="{{ route('projects.details', ['id' => $project->id]) }}" class="arrow-icon">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="project-items style-2">
-                            <div class="project-image">
-                                <img src="assets/img/project/06.jpg" alt="project-img">
-                                <div class="project-content">
-                                    <p>Technology</p>
-                                    <h4>
-                                        <a href="project-details.html">Analytic Solutions</a>
-                                    </h4>
-                                    <a href="project-details.html" class="arrow-icon">
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="project-items style-2">
-                            <div class="project-image">
-                                <img src="assets/img/project/07.jpg" alt="project-img">
-                                <div class="project-content">
-                                    <p>Solutions</p>
-                                    <h4>
-                                        <a href="project-details.html">Design Solutions</a>
-                                    </h4>
-                                    <a href="project-details.html" class="arrow-icon">
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </section>
 
@@ -436,7 +432,7 @@
 <div class="brand-section fix section-padding pt-0">
     <div class="container">
         <div class="brand-wrapper">
-            <h6 class="text-center wow fadeInUp" data-wow-delay=".3s">1k + Brands Trust Us</h6>
+            <h3 class="text-center wow fadeInUp" data-wow-delay=".3s">Nos partenaires</h3>
             <div class="swiper brand-slider">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">

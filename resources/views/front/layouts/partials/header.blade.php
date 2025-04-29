@@ -11,7 +11,7 @@
         <meta name="description" content="Infotek - IT Solution & Technology HTML Template">
         <!-- ======== Page title ============ -->
         <title>La maison du village</title>
-        <link rel="shortcut icon" href="assets/img/logo/logo.jpg">
+        <link rel="shortcut icon" href="{{asset('assets/img/logo/logo.jpg')}}">
 
 
         <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -113,7 +113,7 @@
                         <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                             <div class="offcanvas__logo">
                                 <a href="index.html">
-                                    <img src="assets/img/logo/logo.jpg" alt="logo-img">
+                                    <img src="{{asset('assets/img/logo/logo.jpg')}}" alt="logo-img">
                                 </a>
                             </div>
                             <div class="offcanvas__close">
@@ -198,11 +198,11 @@
                         <div class="top-right">
                             <div class="flag-wrap">
                                 <div class="flag">
-                                    <img src="assets/img/flag.png" alt="flag">
+                                    <img src="{{asset('assets/img/flag.png')}}" alt="flag">
                                 </div>
                                 <div class="nice-select" tabindex="0">
                                     <span class="current">
-                                        English
+
                                     </span>
                                     <ul class="list">
                                         <li data-value="1" class="option selected focus">
@@ -238,7 +238,7 @@
                             <div class="header-left">
                                 <div class="logo">
                                     <a href="index.html" class="header-logo">
-                                        <img src="assets/img/logo/logo.jpg" alt="Logo du site">
+                                        <img src="{{asset('assets/img/logo/logo.jpg')}}" alt="Logo du site">
                                     </a>
                                 </div>
                             </div>
@@ -282,7 +282,7 @@
                                                             <i class="fas fa-angle-down"></i>
                                                             </a>
                                                             <ul class="submenu">
-                                                                 <li><a href="project.html">Project</a></li>
+                                                                 <li><a href="{{ route('projects.index') }}">Projet</a></li>
                                                                 <li><a href="project-carousel.html">Project Carousel</a></li>
                                                                 <li><a href="project-details.html">Project Details</a></li>
                                                             </ul>
@@ -309,7 +309,7 @@
                                                         <i class="fas fa-angle-down"></i>
                                                     </a>
                                                     <ul class="submenu">
-                                                        <li><a href="news.html">Blog Grid</a></li>
+                                                        <li><a href="{{ route('blog.index') }}">Actulites</a></li>
                                                         <li><a href="news-standard.html">Blog Standard</a></li>
                                                         <li><a href="news-details.html">Blog Details</a></li>
                                                     </ul>

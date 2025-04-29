@@ -61,7 +61,8 @@
                                         <div class="content">
                                             <p>Call Us 7/24</p>
                                             <h3>
-                                                <a href="tel:+2085550112">+208-555-0112</a>
+                                                <a href=""><p>{{ site_setting('tel1', 'Non disponible') }}</p>
+                                                </a>
                                             </h3>
                                         </div>
                                     </div>
@@ -76,7 +77,7 @@
                                         <div class="content">
                                             <p>Make a Quote</p>
                                             <h3>
-                                                <a href="mailto:infotech@gmail.com">Infotech@gmail.com</a>
+                                                <a href="mailto:infotech@gmail.com">{{ site_setting('email') }}</a>
                                             </h3>
                                         </div>
                                     </div>
@@ -90,7 +91,7 @@
                                         <div class="content">
                                             <p>Location</p>
                                             <h3>
-                                                4517 Washington ave.
+                                                {{ site_setting('adresse',) }}
                                             </h3>
                                         </div>
                                     </div>
