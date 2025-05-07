@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('cultures', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('origine')->nullable();
+            $table->text('description')->nullable();
+            $table->string('type')->nullable();
+            $table->date('date_celebration')->nullable();
+            $table->string('lieu_celebration')->nullable();
+            $table->string('image')->nullable(); 
+            $table->string('video')->nullable();
             $table->timestamps();
         });
     }
