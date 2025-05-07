@@ -122,46 +122,68 @@
                                 </button>
                             </div>
                         </div>
-                        <p class="text d-none d-lg-block">
-                            Nullam dignissim, ante scelerisque the  is euismod fermentum odio sem semper the is erat, a feugiat leo urna eget eros. Duis Aenean a imperdiet risus.
-                        </p>
+
                         <div class="mobile-menu fix mb-3"></div>
                         <div class="offcanvas__contact">
-                            <h4>Contact Info</h4>
                             <ul>
                                 <li class="d-flex align-items-center">
                                     <div class="offcanvas__contact-icon">
                                         <i class="fal fa-map-marker-alt"></i>
                                     </div>
                                     <div class="offcanvas__contact-text">
-                                        <a target="_blank" href="#">Main Street, Melbourne, Australia</a>
+                                        <a target="_blank" href="#">
+                                            {{ site_setting('address', 'Adresse non spécifiée') }}
+                                        </a>
                                     </div>
                                 </li>
+
                                 <li class="d-flex align-items-center">
                                     <div class="offcanvas__contact-icon mr-15">
                                         <i class="fal fa-envelope"></i>
                                     </div>
                                     <div class="offcanvas__contact-text">
-                                        <a href="mailto:info@azent.com"><span class="mailto:info@example.com">info@example.com</span></a>
+                                        <a href="mailto:{{ site_setting('email', 'info@example.com') }}">
+                                            {{ site_setting('email', 'info@example.com') }}
+                                        </a>
                                     </div>
                                 </li>
+
                                 <li class="d-flex align-items-center">
                                     <div class="offcanvas__contact-icon mr-15">
                                         <i class="fal fa-clock"></i>
                                     </div>
                                     <div class="offcanvas__contact-text">
-                                        <a target="_blank" href="#">Mod-friday, 09am -05pm</a>
+                                        <a target="_blank" href="#">
+                                            {{ site_setting('working_hours', 'Lun-Ven, 09h-17h') }}
+                                        </a>
                                     </div>
                                 </li>
+
                                 <li class="d-flex align-items-center">
                                     <div class="offcanvas__contact-icon mr-15">
                                         <i class="far fa-phone"></i>
                                     </div>
                                     <div class="offcanvas__contact-text">
-                                        <a href="tel:+11002345909">+11002345909</a>
+                                        <a href="tel:{{ site_setting('tel1', '+11002345909') }}">
+                                            {{ site_setting('tel1', '+11002345909') }}
+                                        </a>
                                     </div>
                                 </li>
+
+                                @if (site_setting('tel2'))
+                                    <li class="d-flex align-items-center">
+                                        <div class="offcanvas__contact-icon mr-15">
+                                            <i class="far fa-phone"></i>
+                                        </div>
+                                        <div class="offcanvas__contact-text">
+                                            <a href="tel:{{ site_setting('tel2') }}">
+                                                {{ site_setting('tel2') }}
+                                            </a>
+                                        </div>
+                                    </li>
+                                @endif
                             </ul>
+
                             <div class="header-button mt-4">
                                 <a href="contact.html" class="theme-btn text-center">
                                     <span>get A Quote<i class="fa-solid fa-arrow-right-long"></i></span>
@@ -289,11 +311,11 @@
                                                         </li>
                                                         <li class="has-dropdown">
                                                             <a href="team.html">
-                                                            Team
+                                                            Equipe
                                                             <i class="fas fa-angle-down"></i>
                                                             </a>
                                                             <ul class="submenu">
-                                                                <li><a href="team.html">Our Team</a></li>
+                                                                <li><a href="{{ route('equipe.index') }}">Notre Equipe</a></li>
                                                                 <li><a href="team-carousel.html">Team Carousel</a></li>
                                                                 <li><a href="team-details.html">Team Details</a></li>
                                                             </ul>

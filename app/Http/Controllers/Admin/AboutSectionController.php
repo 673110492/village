@@ -23,7 +23,7 @@ class AboutSectionController extends Controller
         $data = $request->validate([
             'slug' => 'required|unique:about_sections,slug',
             'image' => 'nullable|image',
-            'video' => 'nullable|mimes:mp4,avi,mov,webm|max:20000',
+            'video' => 'nullable|mimes:mp4,avi,mov,webm|max:1024000',
             'contenu' => 'nullable|string',
         ]);
 
@@ -67,7 +67,7 @@ class AboutSectionController extends Controller
         // Validation des données du formulaire
         $data = $request->validate([
             'slug' => 'required|unique:about_sections,slug,' . $aboutSection->id,
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|max:1024000',
             'video' => 'nullable|mimes:mp4,avi,mov,webm|max:1024000',
             'contenu' => 'nullable|string',
         ]);

@@ -155,35 +155,47 @@
         </div>
     </div>
 </section>
-
-<!-- About Section Start -->
-<section class="about-section section-padding fix bg-cover">
+@foreach($abouts as $about)
+<section class="about-section section-padding fix bg-cover" style="background-image: url('{{ asset('storage/' . $about->background_image ?? 'assets/img/service/service-bg-2.jpg') }}');">
     <div class="container">
-        @foreach($abouts as $about)
-        <div class="about-wrapper-2">
-
+        <div class="about-wrapper style-2">
             <div class="row">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="about-image">
-                        <div class="shape-image">
-                            <img src="assets/img/about/shape.png" alt="shape-img">
-                        </div>
-                        <div class="circle-shape">
-                            <img src="{{ asset('storage/' . $about->image) }}" alt="shape-img">
-                        </div>
-                        <img src="{{ asset('storage/' . $about->image) }}" alt="about-img">
-                        <div class="video-box">
-                            <a href="https://www.youtube.com/watch?v=Cn4G2lZ_g2I" class="video-btn ripple video-popup">
-                                <i class="fa-solid fa-play"></i>
-                            </a>
+                <!-- Image Section -->
+                <div class="col-lg-6">
+                    <div class="card shadow rounded-4 overflow-hidden">
+                        <div class="card-body p-3">
+                            <!-- Cercle décoratif (optionnel) -->
+                            <div class="text-center mb-3">
+                                <img src="{{ asset('assets/img/about/circle.png') }}" alt="shape-img" class="img-fluid" style="max-width: 80px;">
+                            </div>
+
+                            <!-- Première image -->
+                            <div class="mb-3 wow fadeInLeft" data-wow-delay=".3s">
+                                <img src="{{ asset('storage/' . $about->image) }}" alt="about-img-1" class="img-fluid rounded w-100">
+                            </div>
+
+                            <!-- Deuxième image devient la vidéo -->
+                            @if($about->video)
+                            <div class="video-section wow fadeInUp" data-wow-delay=".5s">
+                                <video width="100%" controls>
+                                    <source src="{{ asset('storage/' . $about->video) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            @else
+                            <div class="wow fadeInUp" data-wow-delay=".5s">
+                                <img src="assets/img/breadcrumb.jpg" alt="about-img-2" class="img-fluid rounded w-100">
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
 
+                <!-- Content Section -->
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="about-content">
                         <div class="section-title">
-                            <span class="wow fadeInUp">ABOUT DE LA MAISON DU VILLAGE</span>
+                            <span class="wow fadeInUp">{{ $about->slug }}</span>
                             <h2 class="wow fadeInUp" data-wow-delay=".3s">
                                 {{ $about->slug }}
                             </h2>
@@ -193,32 +205,23 @@
                         </p>
 
                         <div class="about-author">
-                            <div class="about-button wow fadeInUp" data-wow-delay=".8s">
+                            <div class="about-button wow fadeInUp" data-wow-delay=".5s">
                                 <a href="about.html" class="theme-btn">
                                     Explore More
                                     <i class="fa-solid fa-arrow-right-long"></i>
                                 </a>
                             </div>
-                            <div class="author-icon wow fadeInUp" data-wow-delay=".9s">
-                               <div class="icon">
-                                    <i class="fa-solid fa-phone"></i>
-                               </div>
-                                <div class="content">
-                                    <span>Call Us Now</span>
-                                    <h5>
-                                        <a href="tel:+2085550112">+208-555-0112</a>
-                                    </h5>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-        @endforeach
-
     </div>
 </section>
+@endforeach
+
+
 
 <!-- Brand Section Start -->
 <div class="brand-section fix section-padding pt-0">

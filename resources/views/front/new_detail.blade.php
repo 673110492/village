@@ -55,8 +55,7 @@
                                     <li><i class="fa-solid fa-tag"></i> {{ $post->category->name ?? 'IT Services' }}</li>
                                 </ul>
                                 <h3>{{ $post->slug }}</h3>
-                                <p class="mb-3">{{ $post->contenu }}</p>
-
+                                <div>{!! $post->contenu !!}</div>
                             </div>
                         </div>
 
@@ -92,7 +91,7 @@
                                     <div class="content">
                                         <div class="head d-flex flex-wrap gap-2 align-items-center justify-content-between">
                                             <div class="con">
-                                                <h5>{{ $comment->user->name }}</h5>
+                                                <h5>{{ $comment->nom }}</h5>
                                                 <span>{{ $comment->created_at->format('d M, Y \a\t h:i a') }}</span>
                                             </div>
                                             <div class="star">
@@ -113,22 +112,22 @@
                         <!-- Comment Form Section -->
                         <div class="comment-form-wrap pt-5">
                             <h3>Leave a Comment</h3>
-                            <form action="" method="POST">
+                            <form action="{{ route('blog.comment', $post->slug) }}" method="POST">
                                 @csrf
                                 <div class="row g-4">
                                     <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="text" name="name" placeholder="Your Name" required>
+                                            <input type="text" name="nom" value="{{ old('nom') }}" placeholder="Your Name" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="email" name="email" placeholder="Your Email" required>
+                                            <input type="email" name="email" value="{{ old('email') }}" placeholder="Your Email" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <textarea name="message" placeholder="Write Message" required></textarea>
+                                            <textarea name="message" placeholder="Write Message" required>{{ old('message') }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">

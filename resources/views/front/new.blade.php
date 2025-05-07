@@ -67,7 +67,7 @@
                 </li>
             </ul>
             <h3>
-                <a href="{{ route('blog.show', $poster->slug) }}">{{ \Illuminate\Support\Str::limit($poster->contenu, 50) }}</a>
+                <a href="{{ route('blog.show', $poster->slug) }}">{{$poster->slug }}</a>
             </h3>
             <a href="{{ route('blog.show', $poster->slug) }}" class="theme-btn-2 mt-3">
                 Read More

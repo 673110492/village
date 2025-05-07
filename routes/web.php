@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\site\EquipeController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\{
@@ -149,13 +150,20 @@ Route::controller(BlogController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{slug}', 'show')->name('show');
+        Route::post('/{slug}/comment', 'storeComment')->name('comment');
     });
+
 
     use App\Http\Controllers\site\ProjeController;
 
     Route::prefix('projects')->name('projects.')->group(function () {
         Route::get('/', [ProjeController::class, 'index'])->name('index');     // /projects
         Route::get('/{id}', [ProjeController::class, 'show'])->name('show');   // /projects/{id}
+    });
+
+    Route::controller(EquipeController::class)->prefix('equipe')->name('equipe.')->group(function () {
+        Route::get('/', 'index')->name('index');           // /equipe
+        Route::get('/{id}', 'show')->name('show');         // /equipe/{id}
     });
 
 

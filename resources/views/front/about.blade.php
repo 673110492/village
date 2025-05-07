@@ -323,13 +323,14 @@
                                         <p>Project</p> <!-- Vous pouvez personnaliser ce texte selon vos besoins -->
 
                                         <h4>
-                                            <a href="{{ route('projects.details', ['id' => $project->id]) }}">
-                                                {{ Str::limit(strip_tags($project->description), 40) }}
+                                            <a href="{{ route('projects.show', $project->id) }}">
+                                                {{ html_entity_decode(strip_tags($project->slug)) }}
+
                                             </a>
                                         </h4>
 
                                         <!-- Lien pour afficher les détails du projet -->
-                                        <a href="{{ route('projects.details', ['id' => $project->id]) }}" class="arrow-icon">
+                                        <a href="{{ route('projects.show', $project->id) }}" class="arrow-icon">
                                             <i class="fa-solid fa-arrow-right"></i>
                                         </a>
                                     </div>
