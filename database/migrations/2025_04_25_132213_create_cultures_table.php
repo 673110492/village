@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('date_celebration')->nullable();
             $table->string('lieu_celebration')->nullable();
             $table->string('image1')->nullable();
-            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
             $table->string('video1')->nullable();
             $table->string('video2')->nullable();
             $table->timestamps();

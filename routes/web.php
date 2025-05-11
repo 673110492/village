@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\{
     TeamController,
     CompanyValueController,
     CompanyMissionController,
+    CultureController,
     DashboardController,
     ProfilController
 };
@@ -112,6 +113,19 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function() {
      Route::patch('missions/{mission}/toggle-status', [CompanyMissionController::class, 'toggleStatus'])
       ->name('missions.toggleStatus');
 
+
+
+      Route::prefix('admin/cultures') // Préfixe pour toutes les routes du groupe
+    ->name('cultures.') // Nommer les routes avec le préfixe cultures.
+    ->group(function () {
+        Route::get('/', [CultureController::class, 'index'])->name('index');
+        Route::get('create', [CultureController::class, 'create'])->name('create');
+        Route::post('store', [CultureController::class, 'store'])->name('store');
+        Route::get('{id}', [CultureController::class, 'show'])->name('show');
+        Route::get('{id}/edit', [CultureController::class, 'edit'])->name('edit');
+        Route::put('{id}', [CultureController::class, 'update'])->name('update');
+        Route::delete('{id}', [CultureController::class, 'destroy'])->name('destroy');
+    });
 
 });
 

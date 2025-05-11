@@ -13,6 +13,9 @@
             <li><a href="{{route('admin.projects.index')}}" class="block py-2 px-4 hover:bg-blue-700">
                 <i class="fas fa-briefcase mr-2"></i> Projets
             </a></li>
+            <li><a href="{{route('admin.cultures.index')}}" class="block py-2 px-4 hover:bg-blue-700">
+                <i class="fas fa-briefcase mr-2"></i> Danse_tradictionelle
+            </a></li>
             <li><a href="{{route('admin.testimonials.index')}}" class="block py-2 px-4 hover:bg-blue-700">
                 <i class="fas fa-quote-left mr-2"></i> Temoignages
             </a></li>

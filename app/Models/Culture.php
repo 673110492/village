@@ -16,8 +16,10 @@ class Culture extends Model
         'type',
         'date_celebration',
         'lieu_celebration',
-        'image',
-        'video',
+        'image1',
+        'image2',
+        'video1',
+        'video2',
     ];
 
     // Relation : une culture a plusieurs commentaires
