@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Réinitialisation du mot de passe - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-</head>
+<script src="https://cdn.tailwindcss.com"></script></head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
     <div class="w-full max-w-md bg-white p-8 rounded shadow-md">

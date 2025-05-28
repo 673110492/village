@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Connexion - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css') <!-- Si tu utilises Vite et Tailwind -->
-</head>
+<script src="https://cdn.tailwindcss.com"></script></head>
 <body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
 
     <div class="w-full max-w-md bg-gradient-to-br from-white via-gray-100 to-white p-8 rounded-2xl shadow-xl backdrop-blur-md">
