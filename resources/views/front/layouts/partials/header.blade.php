@@ -281,6 +281,8 @@
                                                 <li>
                                                     <a href="{{ route('propos.index') }}">About</a>
                                                 </li>
+                                                                                                        <li><a href="{{ route('blog.index') }}">Actulites</a></li>
+
                                                 <li>
                                                     <a href="news.html">
                                                         Services
