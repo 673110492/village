@@ -331,6 +331,7 @@
 
                                         <!-- Lien pour afficher les détails du projet -->
                                         <a href="{{ route('projects.show', $project->id) }}" class="arrow-icon">
+                                            Detail
                                             <i class="fa-solid fa-arrow-right"></i>
                                         </a>
                                     </div>

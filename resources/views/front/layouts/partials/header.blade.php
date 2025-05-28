@@ -305,8 +305,6 @@
                                                             </a>
                                                             <ul class="submenu">
                                                                  <li><a href="{{ route('projects.index') }}">Projet</a></li>
-                                                                <li><a href="project-carousel.html">Project Carousel</a></li>
-                                                                <li><a href="project-details.html">Project Details</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="has-dropdown">
@@ -316,8 +314,7 @@
                                                             </a>
                                                             <ul class="submenu">
                                                                 <li><a href="{{ route('equipe.index') }}">Notre Equipe</a></li>
-                                                                <li><a href="team-carousel.html">Team Carousel</a></li>
-                                                                <li><a href="team-details.html">Team Details</a></li>
+                                                               
                                                             </ul>
                                                         </li>
                                                         <li><a href="pricing.html">Pricing</a></li>
@@ -332,8 +329,7 @@
                                                     </a>
                                                     <ul class="submenu">
                                                         <li><a href="{{ route('blog.index') }}">Actulites</a></li>
-                                                        <li><a href="news-standard.html">Blog Standard</a></li>
-                                                        <li><a href="news-details.html">Blog Details</a></li>
+                                                       
                                                     </ul>
                                                 </li>
                                                 <li>

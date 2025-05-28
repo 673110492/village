@@ -141,14 +141,14 @@
                         border: 2px solid #fff;
                         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                     ">
-                        <img src="{{ ('assets/img/logo/logo.jpg') }}" alt="logo-img" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="{{ asset('assets/img/logo/logo.jpg') }}" alt="logo-img" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </a>
             </div>
 
             <!-- Texte du footer -->
             <p class="wow fadeInRight color-2" data-wow-delay=".5s">
-                © All Copyright 2024 by <a href="index.html">LA MAISON DU VILLAGE</a>
+                © All Copyright 2025 by <a href="index.html">LA MAISON DU VILLAGE</a>
             </p>
         </div>
     </div>
