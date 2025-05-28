@@ -297,13 +297,13 @@ function getYoutubeId($url) {
     <div class="container">
         <div class="section-title-area">
             <div class="section-title">
-                <span>What We Do</span>
+                <span>Nos Domaines de Formation</span>
                 <h2>
-                    We Solve IT Problems <br> With Technology
+                    Former et Accompagner les Populations <br> en Zone Rurale avec des Compétences IT
                 </h2>
             </div>
-            <a href="service.html" class="theme-btn">
-                See all Services
+            <a href="formations.html" class="theme-btn">
+                Voir toutes les formations
                 <i class="fa-solid fa-arrow-right-long"></i>
             </a>
         </div>
@@ -311,23 +311,23 @@ function getYoutubeId($url) {
             <div class="col-xl-3 col-lg-4 col-md-6">
                 <div class="service-card-items">
                     <div class="service-image">
-                        <img src="assets/img/service/02.jpg" alt="service-img">
+                        <img src="assets/img/service/02.jpg" alt="image formation">
                     </div>
                     <div class="icon-2">
-                        <img src="assets/img/service/icon/s-icon-1.svg" alt="img">
+                        <img src="assets/img/service/icon/s-icon-1.svg" alt="icone">
                     </div>
                     <div class="service-content">
                         <div class="icon">
-                            <img src="assets/img/service/icon/s-icon-1.svg" alt="img">
+                            <img src="assets/img/service/icon/s-icon-1.svg" alt="icone">
                         </div>
                         <h4>
-                            <a href="service-details.html">Database Security</a>
+                            <a href="formation-details.html">Sécurité des Bases de Données</a>
                         </h4>
                         <p>
-                            accumsan. Pellentesque in magna tincidunt, this is.
+                            Apprenez à protéger et gérer efficacement les données dans les systèmes d'information.
                         </p>
-                        <a href="service-details.html" class="theme-btn-2 mt-3">
-                            read More
+                        <a href="formation-details.html" class="theme-btn-2 mt-3">
+                            En savoir plus
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </a>
                     </div>
@@ -336,23 +336,23 @@ function getYoutubeId($url) {
             <div class="col-xl-3 col-lg-4 col-md-6">
                 <div class="service-card-items">
                     <div class="service-image">
-                        <img src="assets/img/service/03.jpg" alt="service-img">
+                        <img src="assets/img/service/03.jpg" alt="image formation">
                     </div>
                     <div class="icon-2">
-                        <img src="assets/img/service/icon/s-icon-2.svg" alt="img">
+                        <img src="assets/img/service/icon/s-icon-2.svg" alt="icone">
                     </div>
                     <div class="service-content">
                         <div class="icon">
-                            <img src="assets/img/service/icon/s-icon-2.svg" alt="img">
+                            <img src="assets/img/service/icon/s-icon-2.svg" alt="icone">
                         </div>
                         <h4>
-                            <a href="service-details.html">IT Consultancy</a>
+                            <a href="formation-details.html">Conseil en Technologies de l'Information</a>
                         </h4>
                         <p>
-                            accumsan. Pellentesque in magna tincidunt, this is.
+                            Développez vos compétences en analyse et accompagnement IT pour les PME rurales.
                         </p>
-                        <a href="service-details.html" class="theme-btn-2 mt-3">
-                            read More
+                        <a href="formation-details.html" class="theme-btn-2 mt-3">
+                            En savoir plus
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </a>
                     </div>
@@ -361,23 +361,23 @@ function getYoutubeId($url) {
             <div class="col-xl-3 col-lg-4 col-md-6">
                 <div class="service-card-items">
                     <div class="service-image">
-                        <img src="assets/img/service/04.jpg" alt="service-img">
+                        <img src="assets/img/service/04.jpg" alt="image formation">
                     </div>
                     <div class="icon-2">
-                        <img src="assets/img/service/icon/s-icon-4.svg" alt="img">
+                        <img src="assets/img/service/icon/s-icon-4.svg" alt="icone">
                     </div>
                     <div class="service-content">
                         <div class="icon">
-                            <img src="assets/img/service/icon/s-icon-5.svg" alt="img">
+                            <img src="assets/img/service/icon/s-icon-5.svg" alt="icone">
                         </div>
                         <h4>
-                            <a href="service-details.html">App Development</a>
+                            <a href="formation-details.html">Développement d’Applications</a>
                         </h4>
                         <p>
-                            accumsan. Pellentesque in magna tincidunt, this is.
+                            Apprenez à concevoir des applications adaptées aux besoins locaux et communautaires.
                         </p>
-                        <a href="service-details.html" class="theme-btn-2 mt-3">
-                            read More
+                        <a href="formation-details.html" class="theme-btn-2 mt-3">
+                            En savoir plus
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </a>
                     </div>
@@ -386,23 +386,23 @@ function getYoutubeId($url) {
             <div class="col-xl-3 col-lg-4 col-md-6">
                 <div class="service-card-items">
                     <div class="service-image">
-                        <img src="assets/img/service/05.jpg" alt="service-img">
+                        <img src="assets/img/service/05.jpg" alt="image formation">
                     </div>
                     <div class="icon-2">
-                        <img src="assets/img/service/icon/s-icon-3.svg" alt="img">
+                        <img src="assets/img/service/icon/s-icon-3.svg" alt="icone">
                     </div>
                     <div class="service-content">
                         <div class="icon">
-                            <img src="assets/img/service/icon/s-icon-3.svg" alt="img">
+                            <img src="assets/img/service/icon/s-icon-3.svg" alt="icone">
                         </div>
                         <h4>
-                            <a href="service-details.html">Database Security</a>
+                            <a href="formation-details.html">Sensibilisation à la Cybersécurité</a>
                         </h4>
                         <p>
-                            accumsan. Pellentesque in magna tincidunt, this is.
+                            Initiez-vous aux bonnes pratiques pour protéger vos systèmes et informations personnelles.
                         </p>
-                        <a href="service-details.html" class="theme-btn-2 mt-3">
-                            read More
+                        <a href="formation-details.html" class="theme-btn-2 mt-3">
+                            En savoir plus
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </a>
                     </div>
@@ -418,23 +418,24 @@ function getYoutubeId($url) {
                          <i class="fa-solid fa-phone"></i>
                     </div>
                      <div class="content">
-                         <span>Call Us Now</span>
+                         <span>Contactez-nous dès maintenant</span>
                          <h4>
                              <a href="tel:+2085550112">+208-555-0112</a>
                          </h4>
                      </div>
                 </div>
                 <h3>
-                    Stay Connected With <br> Cutting Edge IT
+                    Donnez-vous les moyens <br> de réussir grâce à la formation IT
                 </h3>
                 <a href="contact.html" class="theme-btn bg-white">
-                    get A Quote
+                    Demandez un devis
                     <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- Work Process Section Start -->
 <section class="work-process-section fix section-padding pt-0">
