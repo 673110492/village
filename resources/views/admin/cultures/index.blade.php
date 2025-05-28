@@ -7,7 +7,7 @@
     <div class="bg-white shadow-lg rounded-lg p-6">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-2xl font-semibold text-gray-700">Liste des cultures</h2>
-            <a href="{{ url('admin.cultures.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center">
+            <a href="{{ url('admin/admin/cultures/create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center">
                 <i class="fa fa-plus"></i> Ajouter
             </a>
         </div>

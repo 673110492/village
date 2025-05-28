@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Admin Principal',
-            'email' => 'admin@segui.com',
+            'email' => 'admin@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('admin'), // change ce mot de passe !
             'phone' => '+240 123456789',

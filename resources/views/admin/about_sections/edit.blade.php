@@ -54,21 +54,29 @@
 
                 <!-- Vidéo -->
                 <div>
-                    <label for="video" class="block text-sm font-medium text-gray-700 mb-1">Vidéo (optionnelle)</label>
-                    <input type="file" name="video" id="video" accept="video/*"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" />
+                    <label for="lient_youtube" class="block text-sm font-medium text-gray-700 mb-1">Lien YouTube
+                        (optionnel)</label>
+                    <input type="url" name="lient_youtube" id="lient_youtube"
+                        placeholder="https://www.youtube.com/watch?v=exemple"
+                        value="{{ old('lient_youtube', $about->lient_youtube) }}"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
 
-                    @if ($about->video)
-                        <video controls class="mt-2 w-full max-w-md rounded-lg">
-                            <source src="{{ asset('storage/' . $about->video) }}" type="video/mp4">
-                            Votre navigateur ne supporte pas la lecture de vidéos.
-                        </video>
+                    @if ($about->lient_youtube)
+                        <div class="mt-4">
+                            <iframe width="100%" height="315" class="rounded-lg"
+                                src="https://www.youtube.com/embed/{{ \Illuminate\Support\Str::after($about->lient_youtube, 'v=') }}"
+                                title="Vidéo YouTube" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     @endif
 
-                    @error('video')
+                    @error('lient_youtube')
                         <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
 
                 <!-- contenu (Rich Text) -->
                 <div>

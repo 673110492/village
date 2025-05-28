@@ -24,129 +24,130 @@
         <button class="array-prev"><i class="fal fa-arrow-right"></i></button>
         <button class="array-next"><i class="fal fa-arrow-left"></i></button>
     </div>
-    <div class="swiper hero-slider">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="slider-image bg-cover" style="background-image: url('assets/img/hero/hero-2.jpg');">
-                    <div class="mask-shape" data-animation="slideInDown" data-duration="3s" data-delay="2s">
-                        <img src="assets/img/hero/mask-shape-2.png" alt="shape-img">
-                    </div>
-                    <div class="border-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.2s">
-                        <img src="assets/img/hero/border-shape.png" alt="shape-img">
-                    </div>
-                    <div class="circle-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.1s">
-                        <img src="assets/img/choose/circle.png" alt="shape-img">
-                    </div>
-                    <div class="frame" data-animation="slideInLeft" data-duration="3s" data-delay="2.2s">
-                        <img src="assets/img/frame.png" alt="shape-img">
-                    </div>
+   <div class="swiper hero-slider">
+    <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+            <div class="slider-image bg-cover" style="background-image: url('assets/img/hero/hero-2.jpg');">
+                <div class="mask-shape" data-animation="slideInDown" data-duration="3s" data-delay="2s">
+                    <img src="assets/img/hero/mask-shape-2.png" alt="shape-img">
                 </div>
-                <div class="container">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-8">
-                            <div class="hero-content">
-                                <h5 data-animation="slideInRight" data-duration="2s" data-delay=".3s">best it company</h5>
-                                <h1 data-animation="slideInRight" data-duration="2s" data-delay=".5s">
-                                    Get Our Business <br>
-                                    This It Solution
-                                </h1>
-                                <p data-animation="slideInRight" data-duration="2s" data-delay=".9s">
-                                    Consectetur adipiscing elit aenean scelerisque at augue vitae consequat <br> quisque eget congue velit in cursus leo sed sodales est eget turpis.
-                                </p>
-                                <div class="hero-button">
-                                    <a href="about.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn hover-white">
-                                        Explore More
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                    </a>
-                                    <a href="contact.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn border-white">
-                                        Contact Us
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                    </a>
-                                </div>
+                <div class="border-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.2s">
+                    <img src="assets/img/hero/border-shape.png" alt="shape-img">
+                </div>
+                <div class="circle-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.1s">
+                    <img src="assets/img/choose/circle.png" alt="shape-img">
+                </div>
+                <div class="frame" data-animation="slideInLeft" data-duration="3s" data-delay="2.2s">
+                    <img src="assets/img/frame.png" alt="shape-img">
+                </div>
+            </div>
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="hero-content">
+                            <h5 data-animation="slideInRight" data-duration="2s" data-delay=".3s">Centre communautaire</h5>
+                            <h1 data-animation="slideInRight" data-duration="2s" data-delay=".5s">
+                                Bienvenue à <br> La Maison du Village
+                            </h1>
+                            <p data-animation="slideInRight" data-duration="2s" data-delay=".9s">
+                                Un espace de partage, de formation et d’innovation <br> pour toute la communauté.
+                            </p>
+                            <div class="hero-button">
+                                <a href="about.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn hover-white">
+                                    En savoir plus
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </a>
+                                <a href="contact.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn border-white">
+                                    Nous contacter
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide">
-                <div class="slider-image bg-cover" style="background-image: url('assets/img/hero/hero-1.jpg');">
-                    <div class="mask-shape" data-animation="slideInDown" data-duration="3s" data-delay="2s">
-                        <img src="assets/img/hero/mask-shape-2.png" alt="shape-img">
-                    </div>
-                    <div class="border-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.2s">
-                        <img src="assets/img/hero/border-shape.png" alt="shape-img">
-                    </div>
-                    <div class="circle-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.1s">
-                        <img src="assets/img/choose/circle.png" alt="shape-img">
-                    </div>
-                    <div class="frame" data-animation="slideInLeft" data-duration="3s" data-delay="2.2s">
-                        <img src="assets/img/frame.png" alt="shape-img">
-                    </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+            <div class="slider-image bg-cover" style="background-image: url('assets/img/hero/hero-1.jpg');">
+                <div class="mask-shape" data-animation="slideInDown" data-duration="3s" data-delay="2s">
+                    <img src="assets/img/hero/mask-shape-2.png" alt="shape-img">
                 </div>
-                <div class="container">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-8">
-                            <div class="hero-content">
-                                <h5 data-animation="slideInRight" data-duration="2s" data-delay=".3s">best it company</h5>
-                                <h1 data-animation="slideInRight" data-duration="2s" data-delay=".5s">
-                                    Get Our Business <br>
-                                    This It Solution
-                                </h1>
-                                <p data-animation="slideInRight" data-duration="2s" data-delay=".9s">
-                                    Consectetur adipiscing elit aenean scelerisque at augue vitae consequat <br> quisque eget congue velit in cursus leo sed sodales est eget turpis.
-                                </p>
-                                <div class="hero-button">
-                                    <a href="about.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn hover-white">
-                                        Explore More
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                    </a>
-                                    <a href="contact.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn border-white">
-                                        Contact Us
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                    </a>
-                                </div>
+                <div class="border-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.2s">
+                    <img src="assets/img/hero/border-shape.png" alt="shape-img">
+                </div>
+                <div class="circle-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.1s">
+                    <img src="assets/img/choose/circle.png" alt="shape-img">
+                </div>
+                <div class="frame" data-animation="slideInLeft" data-duration="3s" data-delay="2.2s">
+                    <img src="assets/img/frame.png" alt="shape-img">
+                </div>
+            </div>
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="hero-content">
+                            <h5 data-animation="slideInRight" data-duration="2s" data-delay=".3s">Formations & Ateliers</h5>
+                            <h1 data-animation="slideInRight" data-duration="2s" data-delay=".5s">
+                                Développez vos compétences <br> avec nos programmes
+                            </h1>
+                            <p data-animation="slideInRight" data-duration="2s" data-delay=".9s">
+                                Informatique, agriculture, artisanat, entrepreneuriat : <br> des modules adaptés à tous les âges.
+                            </p>
+                            <div class="hero-button">
+                                <a href="about.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn hover-white">
+                                    Découvrir
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </a>
+                                <a href="contact.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn border-white">
+                                    Prendre rendez-vous
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide">
-                <div class="slider-image bg-cover" style="background-image: url('assets/img/hero/hero-3.jpg');">
-                    <div class="mask-shape" data-animation="slideInDown" data-duration="3s" data-delay="2s">
-                        <img src="assets/img/hero/mask-shape-2.png" alt="shape-img">
-                    </div>
-                    <div class="border-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.2s">
-                        <img src="assets/img/hero/border-shape.png" alt="shape-img">
-                    </div>
-                    <div class="circle-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.1s">
-                        <img src="assets/img/choose/circle.png" alt="shape-img">
-                    </div>
-                    <div class="frame" data-animation="slideInLeft" data-duration="3s" data-delay="2.2s">
-                        <img src="assets/img/frame.png" alt="shape-img">
-                    </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+            <div class="slider-image bg-cover" style="background-image: url('assets/img/hero/hero-3.jpg');">
+                <div class="mask-shape" data-animation="slideInDown" data-duration="3s" data-delay="2s">
+                    <img src="assets/img/hero/mask-shape-2.png" alt="shape-img">
                 </div>
-                <div class="container">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-8">
-                            <div class="hero-content">
-                                <h5 data-animation="slideInRight" data-duration="2s" data-delay=".3s">best it company</h5>
-                                <h1 data-animation="slideInRight" data-duration="2s" data-delay=".5s">
-                                    Get Our Business <br>
-                                    This It Solution
-                                </h1>
-                                <p data-animation="slideInRight" data-duration="2s" data-delay=".9s">
-                                    Consectetur adipiscing elit aenean scelerisque at augue vitae consequat <br> quisque eget congue velit in cursus leo sed sodales est eget turpis.
-                                </p>
-                                <div class="hero-button">
-                                    <a href="about.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn hover-white">
-                                        Explore More
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                    </a>
-                                    <a href="contact.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn border-white">
-                                        Contact Us
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                    </a>
-                                </div>
+                <div class="border-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.2s">
+                    <img src="assets/img/hero/border-shape.png" alt="shape-img">
+                </div>
+                <div class="circle-shape" data-animation="slideInRight" data-duration="3s" data-delay="2.1s">
+                    <img src="assets/img/choose/circle.png" alt="shape-img">
+                </div>
+                <div class="frame" data-animation="slideInLeft" data-duration="3s" data-delay="2.2s">
+                    <img src="assets/img/frame.png" alt="shape-img">
+                </div>
+            </div>
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="hero-content">
+                            <h5 data-animation="slideInRight" data-duration="2s" data-delay=".3s">Engagement social</h5>
+                            <h1 data-animation="slideInRight" data-duration="2s" data-delay=".5s">
+                                Construisons ensemble <br> un avenir meilleur
+                            </h1>
+                            <p data-animation="slideInRight" data-duration="2s" data-delay=".9s">
+                                Participez à nos actions solidaires : soutien scolaire, éducation numérique, <br> agriculture durable et bien plus.
+                            </p>
+                            <div class="hero-button">
+                                <a href="about.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn hover-white">
+                                    Rejoignez-nous
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </a>
+                                <a href="contact.html" data-animation="slideInRight" data-duration="2s" data-delay=".9s" class="theme-btn border-white">
+                                    Faire un don
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -154,9 +155,36 @@
             </div>
         </div>
     </div>
+</div>
+
 </section>
+
+@php
+function getYoutubeId($url) {
+    if (!$url) return null;
+
+    // Cas URL courte https://youtu.be/ID
+    if (preg_match('/youtu\.be\/([^\?\/]+)/', $url, $matches)) {
+        return $matches[1];
+    }
+
+    // Cas URL classique https://www.youtube.com/watch?v=ID ou autres params
+    if (preg_match('/v=([^&]+)/', $url, $matches)) {
+        return $matches[1];
+    }
+
+    // Cas URL embed https://www.youtube.com/embed/ID
+    if (preg_match('/embed\/([^\?\/]+)/', $url, $matches)) {
+        return $matches[1];
+    }
+
+    return null; // Pas trouvé
+}
+@endphp
+
+
 @foreach($abouts as $about)
-<section class="about-section section-padding fix bg-cover" style="background-image: url('{{ asset('storage/' . $about->background_image ?? 'assets/img/service/service-bg-2.jpg') }}');">
+<section class="about-section section-padding fix bg-cover" style="background-image: url('{{ asset('storage/' . ($about->background_image ?? 'assets/img/service/service-bg-2.jpg')) }}');">
     <div class="container">
         <div class="about-wrapper style-2">
             <div class="row">
@@ -174,17 +202,20 @@
                                 <img src="{{ asset('storage/' . $about->image) }}" alt="about-img-1" class="img-fluid rounded w-100">
                             </div>
 
-                            <!-- Deuxième image devient la vidéo -->
-                            @if($about->video)
-                            <div class="video-section wow fadeInUp" data-wow-delay=".5s">
-                                <video width="100%" controls>
-                                    <source src="{{ asset('storage/' . $about->video) }}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            @else
-                            <div class="wow fadeInUp" data-wow-delay=".5s">
-                                <img src="assets/img/breadcrumb.jpg" alt="about-img-2" class="img-fluid rounded w-100">
+                            <!-- Intégration lien YouTube -->
+                            @php
+                                $youtubeId = getYoutubeId($about->lient_youtube);
+                            @endphp
+
+                            @if($youtubeId)
+                            <div class="video-section wow fadeInUp" data-wow-delay=".5s" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/{{ $youtubeId }}"
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen
+                                    style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius: .5rem;"
+                                ></iframe>
                             </div>
                             @endif
                         </div>

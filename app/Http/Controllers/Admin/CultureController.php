@@ -61,7 +61,7 @@ class CultureController extends Controller
             'video2' => $video2,
         ]);
 
-        return redirect('cultures')->with('success', 'Culture enregistrée avec succès.');
+        return redirect('admin/admin/cultures')->with('success', 'Culture enregistrée avec succès.');
     }
 
     /**

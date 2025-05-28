@@ -6,51 +6,53 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AboutSection;
 use Illuminate\Support\Facades\Storage;
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Video\X264;
 
 class AboutSectionController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $abouts = AboutSection::all();
         return view('admin.about_sections.index', compact('abouts'));
     }
 
-    public function create() {
+    public function create()
+    {
         return view('admin.about_sections.create');
     }
 
-    public function store(Request $request) {
-        // Validation des données du formulaire
+    public function store(Request $request)
+    {
+        // ✅ 1. Validation des données
         $data = $request->validate([
-            'slug' => 'required|unique:about_sections,slug',
-            'image' => 'nullable|image',
-            'video' => 'nullable|mimes:mp4,avi,mov,webm|max:1024000',
-            'contenu' => 'nullable|string',
+            'slug'         => 'required|unique:about_sections,slug',
+            'image'        => 'nullable|image',
+            'lient_youtube' => 'nullable|string',
+            'contenu'      => 'nullable|string',
         ]);
 
-        // Upload de l'image
+        // ✅ 2. Gestion du téléversement de l'image
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('abouts/images', 'public');
         }
 
-        // Upload de la vidéo
-        if ($request->hasFile('video')) {
-            $videoFile = $request->file('video');
-            if ($videoFile->isValid()) { // Vérification de la validité du fichier vidéo
-                $data['video'] = $videoFile->store('abouts/videos', 'public');
-            } else {
-                // Si le fichier vidéo est invalide, afficher un message d'erreur
-                return redirect()->route('admin.about_sections.create')->with('error', 'Le fichier vidéo n\'est pas valide.');
-            }
-        }
-
-        // Marquer comme actif par défaut
+        // ✅ 3. Par défaut, rendre actif l'élément
         $data['is_active'] = true;
 
-        // Créer la section "A propos"
         AboutSection::create($data);
 
-        return redirect()->route('admin.about_sections.index')->with('success', 'Apropos créé avec succès.');
+        return redirect()
+            ->route('admin.about_sections.index')
+            ->with('success', 'A propos créé avec succès.');
     }
+
+
+
+
+
+
+
 
     public function show(AboutSection $aboutSection)
     {
@@ -58,62 +60,55 @@ class AboutSectionController extends Controller
         return view('admin.about_sections.show', compact('about'));
     }
 
-    public function edit(AboutSection $aboutSection) {
+    public function edit(AboutSection $aboutSection)
+    {
         $about = $aboutSection;
         return view('admin.about_sections.edit', compact('about'));
     }
 
-    public function update(Request $request, AboutSection $aboutSection) {
+
+    public function update(Request $request, AboutSection $aboutSection)
+    {
         // Validation des données du formulaire
         $data = $request->validate([
-            'slug' => 'required|unique:about_sections,slug,' . $aboutSection->id,
-            'image' => 'nullable|image|max:1024000',
-            'video' => 'nullable|mimes:mp4,avi,mov,webm|max:1024000',
-            'contenu' => 'nullable|string',
+            'slug'          => 'required|unique:about_sections,slug,' . $aboutSection->id,
+            'image'         => 'nullable|image|max:1024000',
+            'lient_youtube'  => 'nullable|string',
+            'contenu'       => 'nullable|string',
         ]);
 
-        // Mise à jour de l'image si elle est présente
+        // Mise à jour de l'image si un nouveau fichier est fourni
         if ($request->hasFile('image')) {
             // Supprimer l'ancienne image si elle existe
             if ($aboutSection->image) {
                 Storage::disk('public')->delete($aboutSection->image);
             }
+            // Stocker la nouvelle image
             $data['image'] = $request->file('image')->store('abouts/images', 'public');
-        }
-
-        // Mise à jour de la vidéo si elle est présente
-        if ($request->hasFile('video')) {
-            // Vérification de la validité du fichier vidéo
-            $videoFile = $request->file('video');
-            if ($videoFile->isValid()) {
-                // Supprimer l'ancienne vidéo si elle existe
-                if ($aboutSection->video) {
-                    Storage::disk('public')->delete($aboutSection->video);
-                }
-                $data['video'] = $videoFile->store('abouts/videos', 'public');
-            } else {
-                // Si le fichier vidéo est invalide, afficher un message d'erreur
-                return redirect()->route('admin.about_sections.edit', $aboutSection->id)->with('error', 'Le fichier vidéo n\'est pas valide.');
-            }
         }
 
         // Mise à jour de la section "A propos"
         $aboutSection->update($data);
 
-        return redirect()->route('admin.about_sections.index')->with('success', 'Apropos modifié avec succès.');
+        // Redirection avec message de succès
+        return redirect()
+            ->route('admin.about_sections.index')
+            ->with('success', 'A propos modifié avec succès.');
     }
 
-    public function destroy(AboutSection $aboutSection) {
-        // Supprimer l'image et la vidéo si elles existent
+
+
+    public function destroy(AboutSection $aboutSection)
+    {
+        // Supprimer l'image si elle existe
         if ($aboutSection->image) {
             Storage::disk('public')->delete($aboutSection->image);
         }
-        if ($aboutSection->video) {
-            Storage::disk('public')->delete($aboutSection->video);
-        }
+
         // Supprimer la section "A propos"
         $aboutSection->delete();
-        return redirect()->route('admin.about_sections.index')->with('success', 'Apropos supprimé avec succès.');
+
+        return redirect()->route('admin.about_sections.index')->with('success', 'A propos supprimé avec succès.');
     }
 
     public function toggleStatus(AboutSection $aboutSection)

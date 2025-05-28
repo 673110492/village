@@ -1,90 +1,94 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="max-w-3xl mx-auto p-6">
-    <div class="bg-white rounded-xl shadow p-4">
-        <div class="flex items-center mb-4">
-            <img src="{{ $user->photo ?? asset('images/default-avatar.png') }}" alt="{{ $user->name }}" class="w-12 h-12 rounded-full mr-4">
-            <h3 class="text-xl font-semibold text-gray-800">Discussion avec {{ $user->name }}</h3>
-        </div>
+<div class="max-w-3xl mx-auto p-4 flex flex-col h-[90vh]">
 
-        <div class="h-96 overflow-y-auto space-y-4 mb-4 px-2 py-3 bg-gray-50 rounded">
-            @foreach($messages as $message)
-                <div class="flex {{ $message->sender_id == auth()->id() ? 'justify-end' : 'justify-start' }}"
-                     data-message-id="{{ $message->id }}"
-                     data-is-read="{{ $message->is_read ? 'true' : 'false' }}">
-                    <div class="{{ $message->sender_id == auth()->id() ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800' }} max-w-xs px-4 py-2 rounded-lg shadow-sm">
-                        @if ($message->message)
-                            <p class="text-sm mb-1">{{ $message->message }}</p>
+    <div class="bg-white rounded-xl shadow p-4 flex items-center space-x-4 mb-4 flex-shrink-0">
+        <img src="{{ $user->photo ?? asset('images/default-avatar.png') }}" alt="{{ $user->name }}" class="w-12 h-12 rounded-full object-cover">
+        <h3 class="text-xl font-semibold text-gray-800">Discussion avec {{ $user->name }}</h3>
+    </div>
+
+    <div id="messagesContainer" class="flex-1 overflow-y-auto bg-gray-50 rounded-lg p-4 space-y-3 scrollbar-thin scrollbar-thumb-gray-300">
+        @foreach($messages as $message)
+            <div class="flex {{ $message->sender_id == auth()->id() ? 'justify-end' : 'justify-start' }}">
+                <div class="{{ $message->sender_id == auth()->id() ? 'bg-blue-600 text-white rounded-br-none' : 'bg-white border border-gray-300 text-gray-800 rounded-bl-none' }} max-w-[70%] px-4 py-2 shadow-md break-words">
+
+                    @if ($message->message)
+                        <p class="whitespace-pre-wrap">{{ $message->message }}</p>
+                    @endif
+
+                    @if ($message->attachment)
+                        @if(Str::endsWith($message->attachment, ['.jpg', '.jpeg', '.png', '.gif']))
+                            <img src="{{ asset('storage/attachments/' . $message->attachment) }}" alt="Image" class="w-40 h-auto rounded mt-2 object-cover">
+                        @else
+                            <a href="{{ asset('storage/attachments/' . $message->attachment) }}" target="_blank" class="block mt-2 text-sm underline">📎 Fichier joint</a>
                         @endif
+                    @endif
 
-                        @if ($message->attachment)
-                            @if(Str::endsWith($message->attachment, ['.jpg', '.jpeg', '.png', '.gif']))
-                                <img src="{{ asset('storage/attachments/' . $message->attachment) }}" class="w-32 h-auto rounded mt-1" alt="Image">
-                            @else
-                                <a href="{{ asset('storage/attachments/' . $message->attachment) }}" target="_blank" class="text-sm underline mt-1 block">📎 Fichier joint</a>
-                            @endif
-                        @endif
+                    @if ($message->audio)
+                        <audio controls class="mt-2 w-full rounded">
+                            <source src="{{ asset('storage/audios/' . $message->audio) }}" type="audio/mpeg">
+                            Ton navigateur ne supporte pas l'audio.
+                        </audio>
+                    @endif
 
-                        @if ($message->audio)
-                            <audio controls class="mt-2 w-full">
-                                <source src="{{ asset('storage/audios/' . $message->audio) }}" type="audio/mpeg">
-                                Ton navigateur ne supporte pas l'audio.
-                            </audio>
-                        @endif
+                    <div class="flex justify-between items-center mt-1 text-xs opacity-60">
+                        <span>{{ $message->created_at->format('H:i') }}</span>
+                        <button type="button" onclick="respondToMessage('{{ $message->id }}', '{{ addslashes($message->message) }}')" class="text-blue-300 hover:text-blue-100 ml-2">Répondre</button>
+                    </div>
 
-                        <span class="block text-xs text-right opacity-60 mt-1">
-                            {{ $message->created_at->format('H:i') }}
-                        </span>
-
-                        <button type="button" onclick="respondToMessage('{{ $message->id }}', '{{ $message->message }}')" class="text-xs text-blue-500 mt-1">Répondre</button>
-
-                        <!-- Affichage des traits en fonction de l'état du message -->
-                        <div class="mt-2">
-                            <span class="message-status"></span>
-                        </div>
+                    <div class="mt-1">
+                        <span class="message-status"></span>
                     </div>
                 </div>
-            @endforeach
-        </div>
-
-        <form action="{{ route('chat.send') }}" method="POST" enctype="multipart/form-data" class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2">
-            @csrf
-            <input type="hidden" name="user_id" value="{{ $user->id }}">
-            <input type="hidden" id="respond_to_message_id" name="respond_to_message_id"> <!-- Champ caché pour le message auquel on répond -->
-            <textarea name="message" id="message" rows="1" placeholder="Écris un message..." class="flex-grow resize-none p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
-            <input type="file" name="attachment" class="text-sm">
-            <input type="file" name="audio" id="audioInput" class="hidden">
-            <button type="button" id="recordButton" class="bg-yellow-400 text-white px-3 py-2 rounded hover:bg-yellow-500">🎙</button>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Envoyer</button>
-        </form>
-        <p id="recordingStatus" class="text-sm mt-2 text-gray-500"></p>
+            </div>
+        @endforeach
     </div>
+
+    <form action="{{ route('chat.send') }}" method="POST" enctype="multipart/form-data"
+          class="mt-4 flex items-center space-x-2 flex-shrink-0 bg-white p-3 rounded-lg shadow sticky bottom-0">
+        @csrf
+        <input type="hidden" name="user_id" value="{{ $user->id }}">
+        <input type="hidden" id="respond_to_message_id" name="respond_to_message_id">
+
+        <textarea name="message" id="message" rows="1" placeholder="Écris un message..."
+                  class="flex-grow resize-none border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+
+        <input type="file" name="attachment" class="hidden" id="attachmentInput">
+        <label for="attachmentInput" class="cursor-pointer text-gray-500 hover:text-gray-700 text-xl" title="Joindre un fichier">📎</label>
+
+        <input type="file" name="audio" id="audioInput" class="hidden">
+
+        <button type="button" id="recordButton" class="text-yellow-500 hover:text-yellow-600 text-2xl" title="Enregistrer un audio">🎙</button>
+
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-semibold">Envoyer</button>
+    </form>
+
+    <p id="recordingStatus" class="text-sm mt-2 text-gray-500"></p>
 </div>
 
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Sélectionner tous les messages
-        const messages = document.querySelectorAll('[data-message-id]');
+        // Scroll automatique vers le bas au chargement
+        const messagesContainer = document.getElementById('messagesContainer');
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
+        // Gestion des statuts messages (✔✔)
+        const messages = document.querySelectorAll('[data-message-id]');
         messages.forEach(message => {
-            const isRead = message.getAttribute('data-is-read') === 'true'; // Vérifier si le message est lu ou non
+            const isRead = message.getAttribute('data-is-read') === 'true';
             const statusElement = message.querySelector('.message-status');
 
-            // Affichage des traits en fonction de l'état du message
             if (isRead) {
-                // Si le message est lu, afficher deux traits bleus
                 statusElement.textContent = '✔✔';
-                statusElement.classList.add('text-blue-500');
+                statusElement.classList.add('text-blue-400');
             } else {
-                // Si le message n'est pas lu, afficher un seul trait bleu
                 statusElement.textContent = '✔';
-                statusElement.classList.add('text-blue-500');
+                statusElement.classList.add('text-blue-400');
             }
 
-            // Marquer le message comme lu au clic
-            message.addEventListener('click', function () {
+            message.addEventListener('click', () => {
                 if (!isRead) {
                     fetch(`/messages/${message.getAttribute('data-message-id')}/mark-as-read`, {
                         method: 'PATCH',
@@ -94,26 +98,26 @@
                         },
                         body: JSON.stringify({ is_read: true })
                     })
-                    .then(response => response.json())
+                    .then(res => res.json())
                     .then(data => {
                         if (data.success) {
                             message.setAttribute('data-is-read', 'true');
                             statusElement.textContent = '✔✔';
-                            statusElement.classList.add('text-blue-500');
                         }
-                    }).catch(err => console.log(err));
+                    })
+                    .catch(console.error);
                 }
             });
         });
 
-        // Fonction pour répondre à un message
-        function respondToMessage(messageId, messageText) {
-            console.log('Répondre au message ID:', messageId, 'Message:', messageText); // Log pour vérifier que la fonction est appelée
-            document.getElementById('respond_to_message_id').value = messageId;  // Remplir le champ caché avec l'ID du message
-            document.getElementById('message').value = 'Répondre à : ' + messageText;  // Ajouter le texte du message auquel on répond
-        }
+        // Répondre à un message
+        window.respondToMessage = function(messageId, messageText) {
+            document.getElementById('respond_to_message_id').value = messageId;
+            document.getElementById('message').value = 'Répondre à : ' + messageText;
+            document.getElementById('message').focus();
+        };
 
-        // Fonction d'enregistrement audio
+        // Enregistrement audio
         let mediaRecorder;
         let audioChunks = [];
 
@@ -139,8 +143,18 @@
                         mediaRecorder.start();
                         document.getElementById('recordingStatus').textContent = 'Enregistrement en cours...';
                     })
-                    .catch(err => console.log('Erreur d\'accès au microphone :', err));
+                    .catch(err => {
+                        console.error('Erreur d\'accès au microphone :', err);
+                        alert('Impossible d\'accéder au microphone.');
+                    });
             }
+        });
+
+        // Auto-grow textarea
+        const textarea = document.getElementById('message');
+        textarea.addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
         });
     });
 </script>

@@ -127,23 +127,38 @@
             </div>
         </div>
     </div>
-    <div class="footer-bottom style-3">
-        <div class="container">
-            <div class="footer-wrapper d-flex align-items-center justify-content-between">
-                <div class="footer-logo wow fadeInLeft" data-wow-delay=".3s">
-                    <a href="index.html">
-                        <img src="assets/img/logo/white-logo.svg" alt="logo-img">
-                    </a>
-                </div>
-                <p class="wow fadeInRight color-2" data-wow-delay=".5s">
-                    © All Copyright 2024 by <a href="index.html">Infotech</a>
-                </p>
+   <div class="footer-bottom style-3">
+    <div class="container">
+        <div class="footer-wrapper d-flex align-items-center justify-content-between">
+            <!-- Logo dans un avatar -->
+            <div class="footer-logo wow fadeInLeft" data-wow-delay=".3s">
+                <a href="index.html" class="d-flex align-items-center">
+                    <div style="
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        border: 2px solid #fff;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                    ">
+                        <img src="{{ ('assets/img/logo/logo.jpg') }}" alt="logo-img" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </a>
             </div>
+
+            <!-- Texte du footer -->
+            <p class="wow fadeInRight color-2" data-wow-delay=".5s">
+                © All Copyright 2024 by <a href="index.html">LA MAISON DU VILLAGE</a>
+            </p>
         </div>
-        <a href="#" id="scrollUp" class="scroll-icon">
-            <i class="far fa-arrow-up"></i>
-        </a>
     </div>
+
+    <!-- Bouton pour remonter -->
+    <a href="#" id="scrollUp" class="scroll-icon">
+        <i class="far fa-arrow-up"></i>
+    </a>
+</div>
+
 </footer>
 
 <!--<< All JS Plugins >>-->
@@ -160,5 +175,5 @@
 <script src="{{asset('assets/js/main.js')}}"></script>
 </body>
 
-<!-- Mirrored from gramentheme.com/html/infotek/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Apr 2025 09:52:58 GMT -->
+<!-- Mirrored from gramentheme.com/html/la maison du village/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Apr 2025 09:52:58 GMT -->
 </html>

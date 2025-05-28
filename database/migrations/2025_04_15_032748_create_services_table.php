@@ -65,7 +65,7 @@ return new class extends Migration {
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->longText('contenu')->nullable();
-            $table->string('video')->nullable();  
+            $table->string('lient_youtube')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

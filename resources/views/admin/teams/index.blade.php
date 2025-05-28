@@ -3,7 +3,7 @@
 @section('pageSubTitle', 'Équipes / Liste')
 @section('content')
 <div class="container mx-auto p-4">
-    <div class="bg-white shadow-lg rounded-lg p-6">
+    <div class="bg-white shadow-lg rounded-lg p-6 overflow-x-auto"> <!-- Ajout overflow-x-auto pour scroll sur mobile -->
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-2xl font-semibold text-gray-700">Liste des membres</h2>
             <a href="{{ route('admin.teams.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center">
@@ -41,13 +41,12 @@
                             @endif
                         </td>
                         <td class="p-1 flex gap-3">
-                        <a href="{{ route('admin.teams.show', $team->id) }}" class="text-gray-500 hover:text-gray-900">
-                        <i class="fa fa-eye"></i> <!-- Icône pour voir les détails -->
-                        </a>
+                            <a href="{{ route('admin.teams.show', $team->id) }}" class="text-gray-500 hover:text-gray-900">
+                                <i class="fa fa-eye"></i>
+                            </a>
                             <a href="{{ route('admin.teams.edit', $team->id) }}" class="text-blue-500 hover:text-blue-700">
                                 <i class="fa fa-pencil"></i>
                             </a>
-
                             <form action="{{ route('admin.teams.destroy', $team->id) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce membre ?');">
                                 @csrf
                                 @method('DELETE')
@@ -55,17 +54,18 @@
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </form>
-
                             <form action="{{ route('admin.teams.toggleStatus', $team->id) }}" method="POST">
                                 @csrf
                                 @method('PATCH')
-                                
-                                    @if($team->is_active)
-                                    <button type="submit" class="text-yellow-500 hover:text-yellow-700"> <i class="fa fa-lock"></i></button>
-                                    @else
-                                    <button type="submit" class="text-green-500 hover:text-green-700"> <i class="fa fa-unlock"></i></button>
-                                    @endif
-                                
+                                @if($team->is_active)
+                                    <button type="submit" class="text-yellow-500 hover:text-yellow-700">
+                                        <i class="fa fa-lock"></i>
+                                    </button>
+                                @else
+                                    <button type="submit" class="text-green-500 hover:text-green-700">
+                                        <i class="fa fa-unlock"></i>
+                                    </button>
+                                @endif
                             </form>
                         </td>
                     </tr>
@@ -78,25 +78,57 @@
 <!-- DataTables Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.tailwindcss.min.js"></script>
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" />
 
 <script>
     $(document).ready(function() {
-        $('#teamsTable').DataTable({
-            responsive: true,
-            language: {
-                url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json"
-            },
-            "pagingType": "full_numbers",
-            "dom": "<'flex justify-between items-center mb-4'<'text-gray-700'l><'text-gray-700'f>>t<'flex justify-between items-center mt-4'<'text-gray-700'i><'text-gray-700'p>>",
-            "language": {
-                "paginate": {
-                    "first": "<button class='bg-gray-500 text-white px-3 py-1 rounded'><<</button>",
-                    "last": "<button class='bg-gray-500 text-white px-3 py-1 rounded'>>></button>",
-                    "next": "<button class='bg-blue-500 text-white px-3 py-1 rounded'>→</button>",
-                    "previous": "<button class='bg-blue-500 text-white px-3 py-1 rounded'>←</button>"
-                }
+        function getPaginationSettings() {
+            if(window.innerWidth <= 768) {
+                return {
+                    pagingType: 'simple', // pagination avec juste previous et next
+                    responsive: true,
+                    language: {
+                        url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json",
+                        paginate: {
+                            previous: "<button class='bg-blue-500 text-white px-3 py-1 rounded'>←</button>",
+                            next: "<button class='bg-blue-500 text-white px-3 py-1 rounded'>→</button>"
+                        }
+                    },
+                    dom: "<'flex justify-between items-center mb-4'<'text-gray-700'l><'text-gray-700'f>>t<'flex justify-between items-center mt-4'<'text-gray-700'i><'text-gray-700'p>>",
+                };
+            } else {
+                return {
+                    pagingType: 'full_numbers', // pagination complète sur desktop
+                    responsive: true,
+                    language: {
+                        url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json",
+                        paginate: {
+                            first: "<button class='bg-gray-500 text-white px-3 py-1 rounded'>&lt;&lt;</button>",
+                            last: "<button class='bg-gray-500 text-white px-3 py-1 rounded'>&gt;&gt;</button>",
+                            next: "<button class='bg-blue-500 text-white px-3 py-1 rounded'>→</button>",
+                            previous: "<button class='bg-blue-500 text-white px-3 py-1 rounded'>←</button>"
+                        }
+                    },
+                    dom: "<'flex justify-between items-center mb-4'<'text-gray-700'l><'text-gray-700'f>>t<'flex justify-between items-center mt-4'<'text-gray-700'i><'text-gray-700'p>>",
+                };
+            }
+        }
+
+        var table = $('#teamsTable').DataTable(getPaginationSettings());
+
+        // Ajouter flag isMobile pour ne recréer la table que si changement de mode
+        table.isMobile = window.innerWidth <= 768;
+
+        $(window).on('resize', function() {
+            var isMobile = window.innerWidth <= 768;
+            if (table.isMobile !== isMobile) {
+                table.destroy();
+                table = $('#teamsTable').DataTable(getPaginationSettings());
+                table.isMobile = isMobile;
             }
         });
     });

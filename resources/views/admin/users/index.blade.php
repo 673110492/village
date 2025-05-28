@@ -11,36 +11,40 @@
             </a>
         </div>
         <hr class="border-t-3 border-blue-500 mb-4">
-        <table id="operatorsTable" class="w-full mt-4 bg-white shadow-md rounded-lg text-gray-700 border border-gray-200">
-            <thead class="text-gray-600 text-sm uppercase border-b border-gray-300">
-                <tr>
-                    <th class="p-1 text-left">Nom</th>
-                    <th class="p-1 text-left">Email</th>
-                    <th class="p-1 text-left">Téléphone</th>
-                    <th class="p-1 text-left">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-600 text-sm">
-                @foreach ($users as $user)
-                    <tr class="border-b border-gray-200 hover:bg-gray-100 transition duration-200">
-                        <td class="p-1">{{ $user->name }}</td>
-                        <td class="p-1">{{ $user->email }}</td>
-                        <td class="p-1">{{ $user->phone ?? 'N/A' }}</td>
-                        <td class="p-1 flex gap-3">
-                            <a href="{{ route('admin.users.show', $user->id) }}" class="text-gray-500 hover:text-gray-900">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="{{ route('admin.users.edit', $user->id) }}" class="text-blue-500 hover:text-blue-700">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                            <button type="button" class="text-red-500 hover:text-red-700" onclick="openDeleteModal({{ $user->id }})">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </td>
+
+        <!-- Conteneur scroll horizontal pour responsive -->
+        <div class="overflow-x-auto">
+            <table id="operatorsTable" class="min-w-[600px] w-full mt-4 bg-white shadow-md rounded-lg text-gray-700 border border-gray-200">
+                <thead class="text-gray-600 text-sm uppercase border-b border-gray-300">
+                    <tr>
+                        <th class="p-1 text-left">Nom</th>
+                        <th class="p-1 text-left">Email</th>
+                        <th class="p-1 text-left hidden sm:table-cell">Téléphone</th> <!-- Masqué sur mobile -->
+                        <th class="p-1 text-left">Actions</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="text-gray-600 text-sm">
+                    @foreach ($users as $user)
+                        <tr class="border-b border-gray-200 hover:bg-gray-100 transition duration-200">
+                            <td class="p-1">{{ $user->name }}</td>
+                            <td class="p-1">{{ $user->email }}</td>
+                            <td class="p-1 hidden sm:table-cell">{{ $user->phone ?? 'N/A' }}</td> <!-- Masqué sur mobile -->
+                            <td class="p-1 flex gap-3">
+                                <a href="{{ route('admin.users.show', $user->id) }}" class="text-gray-500 hover:text-gray-900">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a href="{{ route('admin.users.edit', $user->id) }}" class="text-blue-500 hover:text-blue-700">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <button type="button" class="text-red-500 hover:text-red-700" onclick="openDeleteModal({{ $user->id }})">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -88,28 +92,26 @@
 </style>
 
 <!-- DataTables Scripts -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.tailwindcss.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css" />
 
 <script>
     $(document).ready(function() {
         $('#operatorsTable').DataTable({
             responsive: true,
-            language: {
-                url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json"
-            },
             pagingType: "full_numbers",
-            dom: "<'flex justify-between items-center mb-4'<'text-gray-700'l><'text-gray-700'f>>t<'flex justify-between items-center mt-4'<'text-gray-700'i><'text-gray-700'p>>",
             language: {
+                url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json",
                 paginate: {
-                    first: "<button class='bg-gray-500 text-white px-3 py-1 rounded'><<</button>",
-                    last: "<button class='bg-gray-500 text-white px-3 py-1 rounded'>>></button>",
+                    first: "<button class='bg-gray-500 text-white px-3 py-1 rounded'>&lt;&lt;</button>",
+                    last: "<button class='bg-gray-500 text-white px-3 py-1 rounded'>&gt;&gt;</button>",
                     next: "<button class='bg-blue-500 text-white px-3 py-1 rounded'>→</button>",
                     previous: "<button class='bg-blue-500 text-white px-3 py-1 rounded'>←</button>"
                 }
-            }
+            },
+            dom: "<'flex justify-between items-center mb-4'<'text-gray-700'l><'text-gray-700'f>>t<'flex justify-between items-center mt-4'<'text-gray-700'i><'text-gray-700'p>>",
         });
     });
 
