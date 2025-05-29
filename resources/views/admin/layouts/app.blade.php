@@ -172,7 +172,6 @@
       });
     });
 
-    // Theme toggle logic
     const themeToggleButton = document.getElementById('themeToggle');
     const body = document.getElementById('body');
 
