@@ -86,6 +86,7 @@ return new class extends Migration {
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
+        
         Schema::create('company_missions', function (Blueprint $table) {
             $table->id();
             $table->string('title');

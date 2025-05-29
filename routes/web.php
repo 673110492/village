@@ -18,7 +18,8 @@ use App\Http\Controllers\Admin\{
     CompanyMissionController,
     CultureController,
     DashboardController,
-    ProfilController
+    ProfilController,
+    WomentemController
 };
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\site\AboutController;
@@ -127,6 +128,20 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
             Route::put('{id}', [CultureController::class, 'update'])->name('update');
             Route::delete('{id}', [CultureController::class, 'destroy'])->name('destroy');
         });
+
+
+
+   Route::prefix('admin')->group(function () {
+    Route::get('/women', [WomentemController::class, 'index'])->name('women.index');
+    Route::get('/women/create', [WomentemController::class, 'create'])->name('women.create');
+    Route::post('/women', [WomentemController::class, 'store'])->name('women.store');
+    Route::get('/women/{id}', [WomentemController::class, 'show'])->name('women.show');
+    Route::get('/women/{id}/edit', [WomentemController::class, 'edit'])->name('women.edit');
+    Route::put('/women/{id}', [WomentemController::class, 'update'])->name('women.update');
+    Route::delete('/women/{id}', [WomentemController::class, 'destroy'])->name('women.destroy');
+    Route::patch('/women/{id}/toggle-status', [WomentemController::class, 'toggleStatus'])->name('women.toggleStatus');
+});
+
 });
 
 Route::middleware(['auth'])->group(function () {
