@@ -12,6 +12,8 @@
     <!-- ======== Page title ============ -->
     <title>La maison du village</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/logo/logo.jpg') }}">
+<!-- À mettre dans le <head> si ce n’est pas encore fait -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">

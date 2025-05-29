@@ -209,10 +209,10 @@ function getYoutubeId($url) {
 
                             @if($youtubeId)
                             <div class="video-section wow fadeInUp" data-wow-delay=".5s" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-                                <iframe 
+                                <iframe
                                     src="https://www.youtube.com/embed/{{ $youtubeId }}"
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen
                                     style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius: .5rem;"
                                 ></iframe>
@@ -256,41 +256,73 @@ function getYoutubeId($url) {
 
 <!-- Brand Section Start -->
 <div class="brand-section fix section-padding pt-0">
-    <div class="container">
+    <div class="container mx-auto">
         <div class="brand-wrapper">
-            <h6 class="text-center wow fadeInUp" data-wow-delay=".3s">1k + Brands Trust Us</h6>
+            <h6 class="text-center wow fadeInUp" data-wow-delay=".3s">NOS PARTENAIRES</h6>
+
             <div class="swiper brand-slider">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="assets/img/brand.png" alt="brand-img">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="assets/img/brand.png" alt="brand-img">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="assets/img/brand.png" alt="brand-img">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="assets/img/brand.png" alt="brand-img">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="assets/img/brand.png" alt="brand-img">
-                        </div>
-                    </div>
+                    @foreach($partenaire as $item)
+                        @if($item->is_active)
+                            <div class="swiper-slide logo-slide">
+                                <div class="brand-image text-center">
+                                    @if($item->url)
+                                        <a href="{{ $item->url }}" target="_blank">
+                                            <img 
+                                                src="{{ asset('storage/' . $item->logo) }}" 
+                                                alt="{{ $item->name }}" 
+                                                class="partner-logo"
+                                            >
+                                        </a>
+                                    @else
+                                        <img 
+                                            src="{{ asset('storage/' . $item->logo) }}" 
+                                            alt="{{ $item->name }}" 
+                                            class="partner-logo"
+                                        >
+                                    @endif
+                                    <p class="partner-name">{{ $item->name }}</p>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Style personnalisé -->
+<style>
+    .partner-logo {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        border-radius: 50%;
+        border: 1px solid #d1d5db; /* gris clair */
+        background-color: #fff;
+        padding: 4px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .partner-name {
+        font-size: 14px;
+        color: #333;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .logo-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        flex-direction: column;
+    }
+</style>
+
+
 
 <!-- Service Section Start -->
 <section class="service-section-3 pb-0 fix section-padding bg-cover" style="background-image: url('assets/img/service/service-bg-3.jpg');">
@@ -410,30 +442,7 @@ function getYoutubeId($url) {
             </div>
         </div>
     </div>
-    <div class="cta-banner-2 section-padding">
-        <div class="container">
-            <div class="cta-wrapper-2">
-                <div class="author-icon">
-                    <div class="icon">
-                         <i class="fa-solid fa-phone"></i>
-                    </div>
-                     <div class="content">
-                         <span>Contactez-nous dès maintenant</span>
-                         <h4>
-                             <a href="tel:+2085550112">+208-555-0112</a>
-                         </h4>
-                     </div>
-                </div>
-                <h3>
-                    Donnez-vous les moyens <br> de réussir grâce à la formation IT
-                </h3>
-                <a href="contact.html" class="theme-btn bg-white">
-                    Demandez un devis
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+
 </section>
 
 
