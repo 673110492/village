@@ -290,6 +290,19 @@
                                                 <a href="{{ route('cultures.index') }}">Culture</a>
                                             </li>
 
+                                            <li>
+                                                <a href="">Women Empowerment</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="">Holiday camp</a>
+                                            </li>
+                                           
+
+                                            <li>
+                                                <a href="">Youth Day</a>
+                                            </li>
+
                                             <li><a href="{{ route('blog.index') }}">Actulites</a></li>
 
                                             <li>
