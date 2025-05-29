@@ -15,9 +15,12 @@ class Culturecommentaire extends Model
         'photo',
     ];
 
-    // Relation : un commentaire appartient à une culture
+     protected $table = 'culturecommentaires';
+
+    // Définir la relation inverse si besoin
     public function culture()
     {
-        return $this->belongsTo(Culture::class);
+        return $this->belongsTo(Culture::class, 'culture_id');
     }
+   
 }

@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::post('/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
@@ -49,7 +50,7 @@ Route::get('/', function () {
     return to_route('accueil.index');
 });
 // Routes Admin avec préfixe 'admin'
-Route::middleware('auth')->prefix('admin')->name('admin.')->group(function() {
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -62,33 +63,33 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function() {
     // Routes Services
     Route::resource('services', ServiceController::class);
     Route::patch('services/{service}/toggle-status', [ServiceController::class, 'toggleStatus'])
-     ->name('services.toggleStatus');
+        ->name('services.toggleStatus');
 
     // Routes Projects
     Route::resource('projects', ProjectController::class);
     Route::patch('projects/{project}/toggle-status', [ProjectController::class, 'toggleStatus'])
-     ->name('projects.toggleStatus');
+        ->name('projects.toggleStatus');
 
     // Routes Posts
     Route::resource('posts', PostController::class);
     Route::patch('posts/{post}/toggle-status', [PostController::class, 'toggleStatus'])
-     ->name('posts.toggleStatus');
-     Route::patch('comments/{id}/approve', [PostController::class, 'approveComment'])->name('comments.approve');
-     Route::delete('comments/{id}', [PostController::class, 'destroyComment'])->name('comments.destroy');
+        ->name('posts.toggleStatus');
+    Route::patch('comments/{id}/approve', [PostController::class, 'approveComment'])->name('comments.approve');
+    Route::delete('comments/{id}', [PostController::class, 'destroyComment'])->name('comments.destroy');
     // Routes About Sections
     Route::resource('about_sections', AboutSectionController::class);
     Route::patch('about_sections/{aboutSection}/toggle-status', [AboutSectionController::class, 'toggleStatus'])
-     ->name('about_sections.toggleStatus');
+        ->name('about_sections.toggleStatus');
 
     // Routes Testimonials
     Route::resource('testimonials', TestimonialController::class);
     Route::patch('testimonials/{testimonial}/toggle-status', [TestimonialController::class, 'toggleStatus'])
-     ->name('testimonials.toggleStatus');
+        ->name('testimonials.toggleStatus');
 
     // Routes Partners
     Route::resource('partners', PartnerController::class);
     Route::patch('partners/{partner}/toggle-status', [PartnerController::class, 'toggleStatus'])
-     ->name('partners.toggleStatus');
+        ->name('partners.toggleStatus');
 
     // Routes Contacts
     Route::resource('contacts', ContactController::class);
@@ -102,31 +103,30 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function() {
     // Routes Teams
     Route::resource('teams', TeamController::class);
     Route::patch('teams/{team}/toggle-status', [TeamController::class, 'toggleStatus'])
-     ->name('teams.toggleStatus');
+        ->name('teams.toggleStatus');
 
-     // Routes Values
-     Route::resource('values', CompanyValueController::class);
-     Route::patch('values/{value}/toggle-status', [CompanyValueController::class, 'toggleStatus'])
-      ->name('values.toggleStatus');
+    // Routes Values
+    Route::resource('values', CompanyValueController::class);
+    Route::patch('values/{value}/toggle-status', [CompanyValueController::class, 'toggleStatus'])
+        ->name('values.toggleStatus');
     // Missions
     Route::resource('missions', CompanyMissionController::class);
-     Route::patch('missions/{mission}/toggle-status', [CompanyMissionController::class, 'toggleStatus'])
-      ->name('missions.toggleStatus');
+    Route::patch('missions/{mission}/toggle-status', [CompanyMissionController::class, 'toggleStatus'])
+        ->name('missions.toggleStatus');
 
 
 
-      Route::prefix('admin/cultures') // Préfixe pour toutes les routes du groupe
-    ->name('cultures.') // Nommer les routes avec le préfixe cultures.
-    ->group(function () {
-        Route::get('/', [CultureController::class, 'index'])->name('index');
-        Route::get('create', [CultureController::class, 'create'])->name('create');
-        Route::post('store', [CultureController::class, 'store'])->name('store');
-        Route::get('{id}', [CultureController::class, 'show'])->name('show');
-        Route::get('{id}/edit', [CultureController::class, 'edit'])->name('edit');
-        Route::put('{id}', [CultureController::class, 'update'])->name('update');
-        Route::delete('{id}', [CultureController::class, 'destroy'])->name('destroy');
-    });
-
+    Route::prefix('admin/cultures') // Préfixe pour toutes les routes du groupe
+        ->name('cultures.') // Nommer les routes avec le préfixe cultures.
+        ->group(function () {
+            Route::get('/', [CultureController::class, 'index'])->name('index');
+            Route::get('create', [CultureController::class, 'create'])->name('create');
+            Route::post('store', [CultureController::class, 'store'])->name('store');
+            Route::get('{id}', [CultureController::class, 'show'])->name('show');
+            Route::get('{id}/edit', [CultureController::class, 'edit'])->name('edit');
+            Route::put('{id}', [CultureController::class, 'update'])->name('update');
+            Route::delete('{id}', [CultureController::class, 'destroy'])->name('destroy');
+        });
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -168,19 +168,23 @@ Route::controller(BlogController::class)
     });
 
 
-    use App\Http\Controllers\site\ProjeController;
+use App\Http\Controllers\site\ProjeController;
 
-    Route::prefix('projects')->name('projects.')->group(function () {
-        Route::get('/', [ProjeController::class, 'index'])->name('index');     // /projects
-        Route::get('/{id}', [ProjeController::class, 'show'])->name('show');   // /projects/{id}
-    });
+Route::prefix('projects')->name('projects.')->group(function () {
+    Route::get('/', [ProjeController::class, 'index'])->name('index');     // /projects
+    Route::get('/{id}', [ProjeController::class, 'show'])->name('show');   // /projects/{id}
+});
 
-    Route::controller(EquipeController::class)->prefix('equipe')->name('equipe.')->group(function () {
-        Route::get('/', 'index')->name('index');           // /equipe
-        Route::get('/{id}', 'show')->name('show');         // /equipe/{id}
-    });
-
-
+Route::controller(EquipeController::class)->prefix('equipe')->name('equipe.')->group(function () {
+    Route::get('/', 'index')->name('index');           // /equipe
+    Route::get('/{id}', 'show')->name('show');         // /equipe/{id}
+});
 
 
 
+
+use App\Http\Controllers\site\TradictionController;
+
+Route::get('/cultures', [TradictionController::class, 'index'])->name('cultures.index');
+Route::get('/cultures/{id}', [TradictionController::class, 'show'])->name('cultures.show');
+Route::post('/cultures/{id}/commentaire', [TradictionController::class, 'storeCommentaire'])->name('cultures.commentaire.store');

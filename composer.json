@@ -33,7 +33,9 @@
         },
         "files": [
         "app/Helpers/TranslationHelper.php",
-        "app/Helpers/SettingHelper.php"
+        "app/Helpers/SettingHelper.php",
+        "app/Helpers/helpers.php"
+
         ]
     },
     "autoload-dev": {
@@ -72,4 +74,7 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true
+
+
+
 }

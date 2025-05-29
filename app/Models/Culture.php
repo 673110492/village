@@ -10,21 +10,17 @@ class Culture extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom',
-        'origine',
+        'titre',
         'description',
-        'type',
-        'date_celebration',
-        'lieu_celebration',
+        'reference',
         'image1',
         'image2',
-        'video1',
-        'video2',
+        'lien_youtube1',
+        'lien_youtube2',
     ];
 
-    // Relation : une culture a plusieurs commentaires
-    public function commentaires()
+    public function culturecommentaires()
     {
-        return $this->hasMany(Culturecommentaire::class);
+        return $this->hasMany(Culturecommentaire::class, 'culture_id');
     }
 }

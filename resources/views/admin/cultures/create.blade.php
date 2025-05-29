@@ -5,7 +5,6 @@
 @section('content')
 <div class="container mx-auto p-4">
     <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
-
         <!-- Bouton retour -->
         <div class="mb-4">
             <a href="{{ route('admin.cultures.index') }}"
@@ -36,22 +35,22 @@
         <form action="{{ route('admin.cultures.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
 
-            <!-- Nom -->
+            <!-- Titre -->
             <div>
-                <label for="nom" class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
-                <input type="text" name="nom" id="nom" value="{{ old('nom') }}" required
-                       class="w-full px-4 py-2 border @error('nom') border-red-500 @else border-gray-300 @enderror rounded-lg focus:outline-none focus:ring focus:ring-yellow-300" />
-                @error('nom')
+                <label for="titre" class="block text-sm font-medium text-gray-700 mb-1">Titre</label>
+                <input type="text" name="titre" id="titre" value="{{ old('titre') }}" required
+                       class="w-full px-4 py-2 border @error('titre') border-red-500 @else border-gray-300 @enderror rounded-lg focus:outline-none focus:ring focus:ring-yellow-300" />
+                @error('titre')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
-            <!-- Origine -->
+            <!-- Référence -->
             <div>
-                <label for="origine" class="block text-sm font-medium text-gray-700 mb-1">Origine</label>
-                <input type="text" name="origine" id="origine" value="{{ old('origine') }}"
-                       class="w-full px-4 py-2 border @error('origine') border-red-500 @else border-gray-300 @enderror rounded-lg" />
-                @error('origine')
+                <label for="reference" class="block text-sm font-medium text-gray-700 mb-1">Référence</label>
+                <input type="text" name="reference" id="reference" value="{{ old('reference') }}"
+                       class="w-full px-4 py-2 border @error('reference') border-red-500 @else border-gray-300 @enderror rounded-lg" />
+                @error('reference')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
@@ -62,36 +61,6 @@
                 <textarea rows="6" name="description" id="description"
                           class="w-full border @error('description') border-red-500 @else border-gray-300 @enderror rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-yellow-300">{{ old('description') }}</textarea>
                 @error('description')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <!-- Type -->
-            <div>
-                <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Type</label>
-                <input type="text" name="type" id="type" value="{{ old('type') }}"
-                       class="w-full px-4 py-2 border @error('type') border-red-500 @else border-gray-300 @enderror rounded-lg" />
-                @error('type')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <!-- Date de célébration -->
-            <div>
-                <label for="date_celebration" class="block text-sm font-medium text-gray-700 mb-1">Date de célébration</label>
-                <input type="date" name="date_celebration" id="date_celebration" value="{{ old('date_celebration') }}"
-                       class="w-full px-4 py-2 border @error('date_celebration') border-red-500 @else border-gray-300 @enderror rounded-lg" />
-                @error('date_celebration')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <!-- Lieu de célébration -->
-            <div>
-                <label for="lieu_celebration" class="block text-sm font-medium text-gray-700 mb-1">Lieu de célébration</label>
-                <input type="text" name="lieu_celebration" id="lieu_celebration" value="{{ old('lieu_celebration') }}"
-                       class="w-full px-4 py-2 border @error('lieu_celebration') border-red-500 @else border-gray-300 @enderror rounded-lg" />
-                @error('lieu_celebration')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
@@ -116,22 +85,22 @@
                 @enderror
             </div>
 
-            <!-- Vidéo 1 -->
+            <!-- Lien Youtube 1 -->
             <div>
-                <label for="video1" class="block text-sm font-medium text-gray-700 mb-1">Vidéo 1</label>
-                <input type="file" name="video1" id="video1"
-                       class="w-full px-4 py-2 border @error('video1') border-red-500 @else border-gray-300 @enderror rounded-lg" />
-                @error('video1')
+                <label for="lien_youtube1" class="block text-sm font-medium text-gray-700 mb-1">Lien YouTube 1</label>
+                <input type="url" name="lien_youtube1" id="lien_youtube1" value="{{ old('lien_youtube1') }}"
+                       class="w-full px-4 py-2 border @error('lien_youtube1') border-red-500 @else border-gray-300 @enderror rounded-lg" />
+                @error('lien_youtube1')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
-            <!-- Vidéo 2 -->
+            <!-- Lien Youtube 2 -->
             <div>
-                <label for="video2" class="block text-sm font-medium text-gray-700 mb-1">Vidéo 2</label>
-                <input type="file" name="video2" id="video2"
-                       class="w-full px-4 py-2 border @error('video2') border-red-500 @else border-gray-300 @enderror rounded-lg" />
-                @error('video2')
+                <label for="lien_youtube2" class="block text-sm font-medium text-gray-700 mb-1">Lien YouTube 2</label>
+                <input type="url" name="lien_youtube2" id="lien_youtube2" value="{{ old('lien_youtube2') }}"
+                       class="w-full px-4 py-2 border @error('lien_youtube2') border-red-500 @else border-gray-300 @enderror rounded-lg" />
+                @error('lien_youtube2')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>

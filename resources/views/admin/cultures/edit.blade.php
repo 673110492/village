@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
-@section('pageTitle', 'Gestion des Célébrations')
-@section('pageSubTitle', 'Célébrations / Édition')
+@section('pageTitle', 'Gestion des Cultures')
+@section('pageSubTitle', 'Culture / Édition')
 
 @section('content')
 <div class="container mx-auto p-4">
@@ -11,13 +11,13 @@
         <div class="mb-4">
             <a href="{{ route('admin.cultures.index') }}"
                class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                ← Retour à la liste des culture
+                ← Retour à la liste des cultures
             </a>
         </div>
 
         <!-- Titre -->
         <h2 class="text-2xl font-semibold text-gray-700 mb-4">
-            Modifier la célébration : <span class="text-blue-600">{{ $culture->nom }}</span>
+            Modifier la culture : <span class="text-blue-600">{{ $culture->titre }}</span>
         </h2>
         <hr class="border-t-3 border-blue-500 mb-6">
 
@@ -26,53 +26,32 @@
             @csrf
             @method('PUT')
 
-            <!-- Nom -->
+            <!-- Titre -->
             <div>
-                <label for="nom" class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
-                <input type="text" name="nom" id="nom" value="{{ old('nom', $culture->nom) }}" required
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-yellow-300" />
-            </div>
-
-            <!-- Origine -->
-            <div>
-                <label for="origine" class="block text-sm font-medium text-gray-700 mb-1">Origine</label>
-                <input type="text" name="origine" id="origine" value="{{ old('origine', $culture->origine) }}"
+                <label for="titre" class="block text-sm font-medium text-gray-700 mb-1">Titre</label>
+                <input type="text" name="titre" id="titre" value="{{ old('titre', $culture->titre) }}" required
                        class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
             </div>
 
-            <!-- Type -->
+            <!-- Référence -->
             <div>
-                <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Type</label>
-                <input type="text" name="type" id="type" value="{{ old('type', $culture->type) }}"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
-            </div>
-
-            <!-- Date de célébration -->
-            <div>
-                <label for="date_culture" class="block text-sm font-medium text-gray-700 mb-1">Date de célébration</label>
-                <input type="date" name="date_culture" id="date_culture" value="{{ old('date_culture', $culture->date_culture) }}"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
-            </div>
-
-            <!-- Lieu -->
-            <div>
-                <label for="lieu_culture" class="block text-sm font-medium text-gray-700 mb-1">Lieu de célébration</label>
-                <input type="text" name="lieu_culture" id="lieu_culture" value="{{ old('lieu_culture', $culture->lieu_culture) }}"
+                <label for="reference" class="block text-sm font-medium text-gray-700 mb-1">Référence</label>
+                <input type="text" name="reference" id="reference" value="{{ old('reference', $culture->reference) }}"
                        class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
             </div>
 
             <!-- Description -->
             <div>
                 <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                <textarea rows="6" name="description" id="description"
-                          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-yellow-300">{{ old('description', $culture->description) }}</textarea>
+                <textarea name="description" id="description" rows="6"
+                          class="w-full border border-gray-300 rounded-lg px-4 py-2">{{ old('description', $culture->description) }}</textarea>
             </div>
 
             <!-- Image 1 -->
             <div>
                 <label for="image1" class="block text-sm font-medium text-gray-700 mb-1">Image 1</label>
                 <input type="file" name="image1" id="image1"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                       class="w-full border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
                 @if($culture->image1)
                     <img src="{{ asset('storage/' . $culture->image1) }}" alt="Image 1" class="mt-2 w-24 h-24 object-cover rounded">
                 @endif
@@ -82,23 +61,23 @@
             <div>
                 <label for="image2" class="block text-sm font-medium text-gray-700 mb-1">Image 2</label>
                 <input type="file" name="image2" id="image2"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                       class="w-full border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
                 @if($culture->image2)
                     <img src="{{ asset('storage/' . $culture->image2) }}" alt="Image 2" class="mt-2 w-24 h-24 object-cover rounded">
                 @endif
             </div>
 
-            <!-- Vidéo 1 -->
+            <!-- Lien YouTube 1 -->
             <div>
-                <label for="video1" class="block text-sm font-medium text-gray-700 mb-1">Vidéo 1 (lien YouTube ou fichier)</label>
-                <input type="text" name="video1" id="video1" value="{{ old('video1', $culture->video1) }}"
+                <label for="lien_youtube1" class="block text-sm font-medium text-gray-700 mb-1">Lien YouTube 1</label>
+                <input type="text" name="lien_youtube1" id="lien_youtube1" value="{{ old('lien_youtube1', $culture->lien_youtube1) }}"
                        class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
             </div>
 
-            <!-- Vidéo 2 -->
+            <!-- Lien YouTube 2 -->
             <div>
-                <label for="video2" class="block text-sm font-medium text-gray-700 mb-1">Vidéo 2 (lien YouTube ou fichier)</label>
-                <input type="text" name="video2" id="video2" value="{{ old('video2', $culture->video2) }}"
+                <label for="lien_youtube2" class="block text-sm font-medium text-gray-700 mb-1">Lien YouTube 2</label>
+                <input type="text" name="lien_youtube2" id="lien_youtube2" value="{{ old('lien_youtube2', $culture->lien_youtube2) }}"
                        class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
             </div>
 

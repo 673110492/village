@@ -8,29 +8,47 @@
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-2xl font-semibold text-gray-700">Liste des cultures</h2>
             <a href="{{ url('admin/admin/cultures/create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center">
-                <i class="fa fa-plus"></i> Ajouter
+                <i class="fa fa-plus mr-2"></i> Ajouter
             </a>
         </div>
         <hr class="border-t-3 border-blue-500 mb-4">
         <table id="culturesTable" class="w-full mt-4 bg-white shadow-md rounded-lg text-gray-700 border border-gray-200">
             <thead class="text-gray-600 text-sm uppercase border-b border-gray-300">
                 <tr>
-                    <th class="p-2 text-left">Nom</th>
-                    <th class="p-2 text-left">Origine</th>
-                    <th class="p-2 text-left">Type</th>
-                    <th class="p-2 text-left">Date de célébration</th>
-                    <th class="p-2 text-left">Lieu</th>
+                    <th class="p-2 text-left">Titre</th>
+                    <th class="p-2 text-left">Référence</th>
+                    <th class="p-2 text-left">Image</th>
+                    <th class="p-2 text-left">Lien YouTube 1</th>
+                    <th class="p-2 text-left">Lien YouTube 2</th>
                     <th class="p-2 text-left">Actions</th>
                 </tr>
             </thead>
             <tbody class="text-gray-600 text-sm">
                 @foreach ($cultures as $culture)
                     <tr class="border-b border-gray-200 hover:bg-gray-100 transition duration-200">
-                        <td class="p-2">{{ $culture->nom }}</td>
-                        <td class="p-2">{{ $culture->origine ?? '—' }}</td>
-                        <td class="p-2">{{ $culture->type ?? '—' }}</td>
-                        <td class="p-2">{{ $culture->date_celebration ? \Carbon\Carbon::parse($culture->date_celebration)->format('d/m/Y') : '—' }}</td>
-                        <td class="p-2">{{ $culture->lieu_celebration ?? '—' }}</td>
+                        <td class="p-2">{{ $culture->titre }}</td>
+                        <td class="p-2">{{ $culture->reference ?? '—' }}</td>
+                        <td class="p-2">
+                            @if ($culture->image1)
+                                <img src="{{ asset('storage/' . $culture->image1) }}" alt="Image" class="w-12 h-12 object-cover rounded">
+                            @else
+                                —
+                            @endif
+                        </td>
+                        <td class="p-2">
+                            @if ($culture->lien_youtube1)
+                                <a href="{{ $culture->lien_youtube1 }}" target="_blank" class="text-blue-500 underline">Vidéo 1</a>
+                            @else
+                                —
+                            @endif
+                        </td>
+                        <td class="p-2">
+                            @if ($culture->lien_youtube2)
+                                <a href="{{ $culture->lien_youtube2 }}" target="_blank" class="text-blue-500 underline">Vidéo 2</a>
+                            @else
+                                —
+                            @endif
+                        </td>
                         <td class="p-2 flex gap-3">
                             <a href="{{ route('admin.cultures.show', $culture->id) }}" class="text-gray-500 hover:text-gray-900">
                                 <i class="fa fa-eye"></i>
@@ -63,19 +81,17 @@
     $(document).ready(function() {
         $('#culturesTable').DataTable({
             responsive: true,
-            language: {
-                url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json"
-            },
             pagingType: "full_numbers",
-            dom: "<'flex justify-between items-center mb-4'<'text-gray-700'l><'text-gray-700'f>>t<'flex justify-between items-center mt-4'<'text-gray-700'i><'text-gray-700'p>>",
             language: {
+                url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json",
                 paginate: {
                     first: "<button class='bg-gray-500 text-white px-3 py-1 rounded'><<</button>",
                     last: "<button class='bg-gray-500 text-white px-3 py-1 rounded'>>></button>",
                     next: "<button class='bg-blue-500 text-white px-3 py-1 rounded'>→</button>",
                     previous: "<button class='bg-blue-500 text-white px-3 py-1 rounded'>←</button>"
                 }
-            }
+            },
+            dom: "<'flex justify-between items-center mb-4'<'text-gray-700'l><'text-gray-700'f>>t<'flex justify-between items-center mt-4'<'text-gray-700'i><'text-gray-700'p>>"
         });
     });
 </script>
