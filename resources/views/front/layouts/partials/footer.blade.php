@@ -161,19 +161,6 @@
 
 </footer>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewport.jquery/1.0.0/viewport.jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/jquery.nice-select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/inview.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-meanmenu/2.0.8/jquery.meanmenu.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.2.0/jquery.magnific-popup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    <script src="https://votre-domaine.com/assets/js/main.js"></script>
-{{--
 <!--<< All JS Plugins >>-->
 <script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
 <script src="{{asset('assets/js/viewport.jquery.js')}}"></script>
@@ -185,7 +172,7 @@
 <script src="{{asset('assets/js/jquery.meanmenu.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('assets/js/wow.min.js')}}"></script>
-<script src="{{asset('assets/js/main.js')}}"></script>  --}}
+<script src="{{asset('assets/js/main.js')}}"></script>
 </body>
 
 <!-- Mirrored from gramentheme.com/html/la maison du village/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Apr 2025 09:52:58 GMT -->
