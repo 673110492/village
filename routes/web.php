@@ -26,6 +26,7 @@ use App\Http\Controllers\site\AboutController;
 use App\Http\Controllers\site\AcceuilController;
 use App\Http\Controllers\site\BlogController;
 use App\Http\Controllers\site\ContacterController;
+use App\Http\Controllers\site\FrontwomenController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -203,3 +204,9 @@ use App\Http\Controllers\site\TradictionController;
 Route::get('/cultures', [TradictionController::class, 'index'])->name('cultures.index');
 Route::get('/cultures/{id}', [TradictionController::class, 'show'])->name('cultures.show');
 Route::post('/cultures/{id}/commentaire', [TradictionController::class, 'storeCommentaire'])->name('cultures.commentaire.store');
+
+
+Route::prefix('empowerment')->name('women.')->group(function () {
+    Route::get('/', [FrontwomenController::class, 'index'])->name('index');
+    Route::get('/{id}', [FrontwomenController::class, 'show'])->name('show');
+});

@@ -291,8 +291,9 @@
                                             </li>
 
                                             <li>
-                                                <a href="">Women Empowerment</a>
+                                                <a href="{{ route('women.index') }}">Women Empowerment</a>
                                             </li>
+
 
                                             <li>
                                                 <a href="">Holiday camp</a>
