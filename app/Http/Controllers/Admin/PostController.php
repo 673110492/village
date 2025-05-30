@@ -34,7 +34,7 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'slug' => 'required|unique:posts,slug',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable',
             'contenu' => 'nullable|string',
         ]);
 
@@ -74,7 +74,7 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'slug' => 'required|string',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable',
             'contenu' => 'nullable|string',
         ]);
 

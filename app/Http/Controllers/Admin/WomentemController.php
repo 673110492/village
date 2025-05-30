@@ -36,8 +36,8 @@ class WomentemController extends Controller
             'description' => 'nullable|string',
             'lien_youtube1' => 'nullable|url',
             'lien_youtube2' => 'nullable|url',
-            'image1' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'image2' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image1' => 'nullable',
+            'image2' => 'nullable',
             'start_date' => 'nullable|date',
             'status' => 'required|in:activé,désactivé',
         ]);
@@ -88,8 +88,8 @@ class WomentemController extends Controller
             'description' => 'nullable|string',
             'lien_youtube1' => 'nullable|url',
             'lien_youtube2' => 'nullable|url',
-            'image1' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'image2' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image1' => 'nullable',
+            'image2' => 'nullable',
             'start_date' => 'nullable|date',
             'status' => 'required|in:activé,désactivé',
         ]);

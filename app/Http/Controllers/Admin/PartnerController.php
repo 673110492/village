@@ -23,7 +23,7 @@ class PartnerController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|max:2048',
+            'logo' => 'nullable',
             'url' => 'nullable|url'
         ]);
 
@@ -51,7 +51,7 @@ class PartnerController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|max:2048',
+            'logo' => 'nullable',
             'url' => 'nullable|url'
         ]);
 

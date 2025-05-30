@@ -36,7 +36,7 @@ class ServiceController extends Controller
     {
         $data = $request->validate([
             'slug' => 'required|unique:services,slug',
-            'image' => 'nullable|image',
+            'image' => 'nullable',
             'description' => 'nullable|string',
         ]);
     
@@ -101,7 +101,7 @@ class ServiceController extends Controller
     {
         $data = $request->validate([
             'slug' => 'required',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable',
             'description' => 'nullable|string',
         ]);
 

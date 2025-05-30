@@ -20,7 +20,7 @@ class ProfilController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'phone' => 'nullable|string|max:20',
+            'phone' => 'nullable',
             'address' => 'nullable|string|max:255',
         ]);
     

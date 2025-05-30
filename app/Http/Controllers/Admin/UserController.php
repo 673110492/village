@@ -29,7 +29,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'phone' => 'nullable|string|max:20',
+            'phone' => 'nullable',
             'address' => 'nullable|string|max:255',
         ]);
     
@@ -63,7 +63,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name'    => 'required|string|max:255',
             'email'   => 'required|email|unique:users,email,' . $user->id,
-            'phone'   => 'nullable|string|max:20',
+            'phone'   => 'nullable',
             'address' => 'nullable|string|max:255',
         ]);
 
@@ -78,4 +78,3 @@ class UserController extends Controller
         return redirect()->route('admin.users.index');
     }
 }
-

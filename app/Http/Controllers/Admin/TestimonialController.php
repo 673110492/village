@@ -35,7 +35,7 @@ class TestimonialController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'fonction' => 'required',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable',
             'contenu' => 'nullable|string',
             'is_active' => 'nullable|boolean',
         ]);
@@ -80,7 +80,7 @@ class TestimonialController extends Controller
         $temoignage = Testimonial::findOrFail($id);  $data = $request->validate([
             'name' => 'required',
             'fonction' => 'required',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable',
             'contenu' => 'nullable|string',
         ]);
 

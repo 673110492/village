@@ -38,7 +38,7 @@ class TeamController extends Controller
             'fonction' => 'required|string',
             'tel' => 'required|string|regex:/^\+\d{8,15}$/',
             'tel' => 'required',
-            'image' => 'nullable|image',
+            'image' => 'nullable',
             'presentation' => 'nullable|string',
 
         ]);
@@ -85,7 +85,7 @@ class TeamController extends Controller
             'tel' => 'nullable|string|max:50',
             'full_phone' => 'nullable|string|max:50',
             'presentation' => 'nullable|string',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable',
         ]);
     
         if ($request->hasFile('image')) {

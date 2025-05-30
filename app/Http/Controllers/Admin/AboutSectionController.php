@@ -27,7 +27,7 @@ class AboutSectionController extends Controller
         // ✅ 1. Validation des données
         $data = $request->validate([
             'slug'         => 'required|unique:about_sections,slug',
-            'image'        => 'nullable|image',
+            'image'        => 'nullable',
             'lient_youtube' => 'nullable|string',
             'contenu'      => 'nullable|string',
         ]);
@@ -72,7 +72,7 @@ class AboutSectionController extends Controller
         // Validation des données du formulaire
         $data = $request->validate([
             'slug'          => 'required|unique:about_sections,slug,' . $aboutSection->id,
-            'image'         => 'nullable|image|max:1024000',
+            'image'         => 'nullable',
             'lient_youtube'  => 'nullable|string',
             'contenu'       => 'nullable|string',
         ]);

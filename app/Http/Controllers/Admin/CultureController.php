@@ -26,8 +26,8 @@ class CultureController extends Controller
             'titre' => 'required|string|max:255',
             'description' => 'nullable|string',
             'reference' => 'nullable|string|max:255',
-            'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image1' => 'nullable',
+            'image2' => 'nullable',
             'lien_youtube1' => 'nullable|url|max:255',
             'lien_youtube2' => 'nullable|url|max:255',
         ]);
@@ -68,8 +68,8 @@ class CultureController extends Controller
             'titre' => 'required|string|max:255',
             'description' => 'nullable|string',
             'reference' => 'nullable|string|max:255',
-            'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image1' => 'nullable',
+            'image2' => 'nullable',
             'lien_youtube1' => 'nullable|url|max:255',
             'lien_youtube2' => 'nullable|url|max:255',
         ]);

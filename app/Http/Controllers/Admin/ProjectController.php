@@ -34,7 +34,7 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
             'slug' => 'required|unique:projects,slug',
-            'image' => 'nullable|image',
+            'image' => 'nullable',
             'description' => 'nullable|string',
         ]);
 
@@ -75,7 +75,7 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
             'slug' => 'required|unique:projects,slug,' . $project->id,
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable',
             'description' => 'nullable|string',
         ]);
 
