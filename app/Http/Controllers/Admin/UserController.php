@@ -32,10 +32,10 @@ class UserController extends Controller
             'phone' => 'nullable',
             'address' => 'nullable|string|max:255',
         ]);
-    
+
         // Générer un mot de passe aléatoire
         $password = Str::random(8);
-    
+
         // Créer l'utilisateur
         $user = User::create([
             'name' => $request->name,
@@ -44,10 +44,9 @@ class UserController extends Controller
             'address' => $request->address,
             'password' => Hash::make($password),
         ]);
-    
-        // Envoyer le mot de passe à l'utilisateur par mail
+
         Mail::to($user->email)->send(new SendGeneratedPassword($user, $password));
-    
+
         return redirect()->route('admin.users.index')->with('success', 'Utilisateur créé avec succès.');
     }
 
